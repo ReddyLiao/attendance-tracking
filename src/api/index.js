@@ -2,21 +2,20 @@ import request from "@/api/request";
 
 export function signIn(params) {
   return request({
-    url: ``,
+    url: `/user/getToken`,
     method: "get",
     params,
   });
 }
 
-export function register(data) {
+export function punchTime(data) {
   return request({
-    url: ``,
+    url: `/attendance/`,
     method: "post",
     data,
   });
 }
-
-export function punchIn(data) {
+export function register(data) {
   return request({
     url: ``,
     method: "post",

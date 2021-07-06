@@ -29,9 +29,9 @@ const routes = [
     ],
   },
   {
-    path: "/signInOrRegister",
-    name: "SignInOrRegister",
-    component: () => import("@/views/SignInOrRegister.vue"),
+    path: "/signIn",
+    name: "SignIn",
+    component: () => import("@/views/SignIn.vue"),
   },
 ];
 
@@ -39,12 +39,11 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
 });
-
 router.beforeEach((to) => {
   const token = localStorage.getItem("transaction");
   if (to.meta.requireAuth) {
     if (!token) {
-      router.push("/login");
+      router.push("/signIn");
     }
   }
 });

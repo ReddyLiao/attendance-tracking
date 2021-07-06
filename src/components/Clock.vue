@@ -35,7 +35,6 @@ export default {
         years: date.getFullYear(),
         months: date.getMonth(),
         dates: date.getDate(),
-
         weeks: date.getDay(),
         hours: date.getHours(),
         minutes: date.getMinutes(),
