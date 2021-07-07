@@ -1,50 +1,45 @@
 <template>
-  <div class="calendar">
-    <v-calendar :value="null" color="red" is-dark>
-      <!-- <v-calendar :attributes="attributes"> -->
-      <!-- <template #day-popover>
-      <div>Using my own content now</div>
-    </template> -->
-    </v-calendar>
-  </div>
+  <v-calendar :attributes="attributes" :value="null" color="yellow" is-dark />
 </template>
 
 <script>
 export default {
-  /* data() {
+  data() {
     const punchs = [
       {
-        description: 'Daily punch time',
-        dates: "", // 有打卡的日期
+        description: "Daily punch time",
+        isComplete: false,
+        dates: { weekdays: 6 }, // 有打卡資料
+        color: "indigo",
       },
     ];
-
     return {
       incId: punchs.length,
       punchs,
     };
   },
-computed: {
+  computed: {
     attributes() {
-return [
-          key: Any,
+      return [
+        // Attributes for punchs
+        ...this.punchs.map((punch) => ({
+          dates: punch.dates,
           highlight: {
-            color: "indigo",
+            color: punch.color,
             fillMode: "light",
+            // class: punch.isComplete ? "opacity-75" : "",
           },
-          content: "red",
+
           popover: {
-          label: punchs.description,
-          visibility: 'click',
-          hideIndicator: true, },
-          customData: { ... },
-          // We also need some dates to know where to display the attribute
-          // We use a single date here, but it could also be an array of dates,
-          //  a date range or a complex date pattern.
-          dates: new Date(),
-]
-        },
-    }*/
+            label: punch.description,
+            visibility: "click",
+            hideIndicator: true,
+          },
+          customData: punch,
+        })),
+      ];
+    },
+  },
 };
 </script>
 

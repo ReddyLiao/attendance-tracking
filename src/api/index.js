@@ -7,6 +7,13 @@ export function signIn(params) {
     params,
   });
 }
+export function attendanceList(params) {
+  return request({
+    url: `/attendance/`,
+    method: "get",
+    params,
+  });
+}
 
 export function punchTime(data) {
   return request({
