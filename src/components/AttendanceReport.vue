@@ -9,14 +9,22 @@
             <th>Date</th>
             <th>Punch In Time</th>
             <th>Punch Out Time</th>
+            <th>Working Time</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in attendanceArr" :key="item">
-            <td>{{ +1 }}</td>
-            <td>{{ item.content.key.date }}</td>
-            <td>{{ item.content.startTime }}</td>
-            <td>{{ item.content.endTime }}</td>
+          <tr v-for="content in attendanceArr" :key="content">
+            <td>{{ content.key.date }}</td>
+            <td>{{ content.startTime }}</td>
+            <td>{{ content.endTime }}</td>
+            <td>
+              {{
+                (content.duration || "")
+                  .replace("PT", "")
+                  .replace("M", "分")
+                  .split(".")[0] + "秒"
+              }}
+            </td>
           </tr>
         </tbody>
       </table>
@@ -40,6 +48,7 @@ export default {
       console.log(res);
       attendanceArr.value = res.data.body.content;
     };
+
     return {
       attendanceArr,
       getAttendanceList,
@@ -49,7 +58,7 @@ export default {
 </script>
 <style scoped>
 .tablesize {
-  width: 75%;
+  width: 50%;
   margin-left: 180px;
 }
 </style>
