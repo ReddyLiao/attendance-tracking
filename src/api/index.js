@@ -17,7 +17,7 @@ export function punchTime(data) {
 }
 export function register(data) {
   return request({
-    url: ``,
+    url: `/user/register`,
     method: "post",
     data,
   });

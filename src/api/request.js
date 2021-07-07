@@ -8,7 +8,7 @@ const service = axios.create({
 service.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("transAdmin");
-    router.currentRoute.value.path === "/signIn"
+    router.currentRoute.value.path === "/signinRegister"
       ? localStorage.removeItem("transAdmin")
       : null;
     token === null
@@ -34,7 +34,7 @@ service.interceptors.response.use(
   },
   (error) => {
     alert("token失效，重新登入");
-    router.push("/signIn");
+    router.push("/signinRegister");
     console.log("error：" + error); // 用於調試
     return Promise.reject(error);
   }

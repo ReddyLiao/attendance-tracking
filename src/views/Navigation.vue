@@ -18,7 +18,7 @@
           >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" href="#" to="/signIn"
+          <router-link class="nav-link" href="#" to="/signinRegister"
             >Sign Out</router-link
           >
         </li>

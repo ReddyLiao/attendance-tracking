@@ -26,17 +26,17 @@
                 class="form-control my-input"
                 placeholder="Password"
                 v-model="user.password"
-                @keyup.enter="userSign"
+                @keyup.enter="userSignIn"
               />
             </div>
             <div class="space"></div>
             <div class="text-center">
               <button
                 type="button"
-                class="btn btn-block send-button tx-tfm"
-                @click="userSign"
+                class="btn btn-block signin-button tx-tfm"
+                @click="userSignIn"
               >
-                Login
+                Sign In
               </button>
             </div>
             <div class="col-md-12">
@@ -46,9 +46,13 @@
               </div>
             </div>
             <div class="form-group">
-              <!-- <router-link class="btn btn-block g-button" href="#" to="three">
+              <button
+                type="button"
+                class="btn btn-block register-button tx-tfm"
+                @click="userRegister"
+              >
                 Register
-              </router-link> -->
+              </button>
             </div>
           </form>
         </div>
@@ -60,7 +64,7 @@
 <script>
 import router from "@/router";
 import { onMounted, reactive } from "vue";
-import { signIn } from "@/api/index.js";
+import { signIn, register } from "@/api/index.js";
 import { useRoute } from "vue-router";
 
 export default {
@@ -71,7 +75,7 @@ export default {
       siteId: 1,
       password: "",
     });
-    const userSign = async () => {
+    const userSignIn = async () => {
       const res = await signIn(user);
       const status = res.data.status;
       console.log(res);
@@ -83,21 +87,32 @@ export default {
         alert(res.data.msg);
       }
     };
-
     !route.query.token
       ? onMounted(() => localStorage.removeItem("transAdmin"))
       : "";
-
+    const userRegister = async () => {
+      const res = await register(user);
+      const status = res.data.status;
+      console.log(res.data.msg);
+      console.log(res);
+      if (status === "ok") {
+        alert("註冊成功");
+        userSignIn();
+      } else {
+        alert(res.data.msg);
+      }
+    };
     return {
       user,
-      userSign,
+      userSignIn,
+      userRegister,
     };
   },
 };
 </script>
 
 <style>
-.send-button {
+.signin-button {
   background: #54c7c3;
   width: 100%;
   font-weight: 600;
@@ -109,7 +124,7 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.g-button {
+.register-button {
   color: #fff !important;
   border: 1px solid #f0d807;
   background: #f0d807 !important;
