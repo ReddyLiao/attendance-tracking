@@ -8,8 +8,13 @@
           >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" href="#" to="dayOff"
-            >Day Off</router-link
+          <router-link class="nav-link" href="#" to="requests"
+            >Requests</router-link
+          >
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" href="#" to="record"
+            >Record</router-link
           >
         </li>
         <li class="nav-item">

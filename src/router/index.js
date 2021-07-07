@@ -12,9 +12,9 @@ const routes = [
         component: () => import("../components/Punch.vue"),
       },
       {
-        path: "dayOff",
-        name: "DayOff",
-        component: () => import("../components/DayOff.vue"),
+        path: "requests",
+        name: "Requests",
+        component: () => import("../components/Requests.vue"),
       },
       {
         path: "record",

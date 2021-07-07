@@ -1,7 +1,15 @@
-<template><h1>Record</h1></template>
+<template>
+  <h1>Record</h1>
+  <DailyRecord />
+</template>
 
 <script>
-export default {};
+import DailyRecord from "./DailyRecord.vue";
+export default {
+  components: {
+    DailyRecord,
+  },
+};
 </script>
 
 <style></style>
