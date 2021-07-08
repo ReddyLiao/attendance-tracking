@@ -1,8 +1,21 @@
 <template>
-  <v-calendar :attributes="attributes" :value="null" color="yellow" is-dark>
-    <template #day-popover>
-      <div>Using my own content now</div>
-    </template>
+  <v-calendar
+    :attributes="attributes"
+    :value="null"
+    color="yellow"
+    is-dark
+    is-expanded
+  >
+    <div>
+      <!-- <div class="text-xs text-gray-300 font-semibold text-center">
+        {{ dayTitle }}
+      </div>
+      <ul>
+        <li v-for="{ key, customData } in attributes" :key="key">
+          {{ customData.description }}
+        </li>
+      </ul> -->
+    </div>
   </v-calendar>
 </template>
 <script>
@@ -24,20 +37,40 @@ export default {
       );
     };
 
+    /**
+ var arr = [];
+var len = oFullResponse.results.length;
+for (var i = 0; i < len; i++) {
+    arr.push({
+        key: oFullResponse.results[i].label,
+        sortable: true,
+        resizeable: true
+    });
+}
+ */
     return {
       attendanceArr,
       getAttendanceList,
     };
   },
   data() {
-    const punchs = [
-      {
-        description: "Daily punch time",
-        isComplete: false,
-        dates: localStorage.getItem("attendanceRecord"), // 有打卡資料
-        color: "indigo",
-      },
+    const punchs = [];
+    var dailyPuncharr = [
+      "2021-07-06",
+      "2021-07-07",
+      "2021-07-08",
+      "2021-07-09",
     ];
+    for (var i = 0; i < dailyPuncharr.length; i++) {
+      punchs.push({
+        description: "Daily punch time2",
+        isComplete: false,
+        dates: dailyPuncharr[i],
+        color: "indigo",
+      });
+    }
+    console.log(punchs);
+
     return {
       incId: punchs.length,
       punchs,

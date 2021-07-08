@@ -10,19 +10,27 @@
   </button>
   <div class="tablesize">
     <div class="table-responsive">
-      <table class="table mt-3 table-hover">
+      <table class="table mt-3">
         <thead>
-          <h3>打卡時間</h3>
-          <hr />
           <tr>
-            <th>上班時間</th>
-            <th>下班時間</th>
+            <th>Punch In</th>
+            <th>Punch Out</th>
+            <th>Working Time</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>{{ (punchTimeArr.startTime || "").split(".")[0] }}</td>
             <td>{{ (punchTimeArr.endTime || "").split(".")[0] }}</td>
+            <td>
+              {{
+                (punchTimeArr.duration || "")
+                  .replace("PT", "")
+                  .replace("H", ":")
+                  .replace("M", ":")
+                  .split(".")[0]
+              }}
+            </td>
           </tr>
         </tbody>
       </table>
@@ -46,7 +54,7 @@ export default {
     const getPunchTime = async () => {
       const res = await punchTime();
       punchTimeArr.value = res.data.body;
-      console.log(res);
+
       localStorage.setItem("dailyPunch", JSON.stringify(res.data.body));
     };
 

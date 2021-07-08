@@ -1,35 +1,33 @@
 <template>
-  <div class="tablesize">
-    <div class="table-responsive">
-      <table class="table mt-3">
-        <thead>
-          <h3>Attendance Report</h3>
-          <hr />
-          <tr>
-            <th>Date</th>
-            <th>Punch In Time</th>
-            <th>Punch Out Time</th>
-            <th>Working Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="content in attendanceArr" :key="content">
-            <td>{{ content.key.date }}</td>
-            <td>{{ content.startTime }}</td>
-            <td>{{ content.endTime }}</td>
-            <td>
-              {{
-                (content.duration || "")
-                  .replace("PT", "")
-                  .replace("H", ":")
-                  .replace("M", ":")
-                  .split(".")[0]
-              }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="table-responsive">
+    <table class="table mt-3">
+      <thead>
+        <h3>Attendance Report</h3>
+        <hr />
+        <tr>
+          <th>Date</th>
+          <th>Punch In Time</th>
+          <th>Punch Out Time</th>
+          <th>Working Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="content in attendanceArr" :key="content">
+          <td>{{ content.key.date }}</td>
+          <td>{{ content.startTime }}</td>
+          <td>{{ content.endTime }}</td>
+          <td>
+            {{
+              (content.duration || "")
+                .replace("PT", "")
+                .replace("H", ":")
+                .replace("M", ":")
+                .split(".")[0]
+            }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -56,9 +54,4 @@ export default {
   },
 };
 </script>
-<style scoped>
-.tablesize {
-  width: 50%;
-  margin-left: 180px;
-}
-</style>
+<style scoped></style>

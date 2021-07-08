@@ -46,12 +46,12 @@
     </div>
     <div class="col-md-4">
       <label for="validationStartTime" class="form-label">Leave Time</label>
-      <span class="input-group-text">@ Start Time</span>
+      <span class="input-group-text"> Start Time</span>
       <DatePick class="form-control" />
     </div>
     <div class="col-md-4">
       <label for="validationEndTime" class="form-label">　 </label>
-      <span class="input-group-text">@ End Time</span>
+      <span class="input-group-text"> End Time</span>
       <DatePick class="form-control" />
     </div>
     <div class="col-12">

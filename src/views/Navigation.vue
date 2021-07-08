@@ -29,12 +29,28 @@
         </li>
       </ul>
     </header>
+    <div class="container-fluid">
+      <div class="row flex-nowrap">
+        <sidebar />
+      </div>
+    </div>
   </div>
-  <router-view />
+  <!-- <aside></aside> -->
 </template>
 <script>
+import Sidebar from "./Sidebar.vue";
 export default {
+  components: { Sidebar },
   name: "Home",
 };
 </script>
-<style lang="scss" scoped></style>
+<style>
+aside {
+  float: left;
+  width: 200px;
+  height: 630px;
+  text-align: center;
+  background-color: #63808f;
+  padding: 20px 10px;
+}
+</style>
