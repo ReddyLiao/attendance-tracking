@@ -21,8 +21,8 @@
         </thead>
         <tbody>
           <tr>
-            <td>{{ punchTimeArr.startTime }}</td>
-            <td>{{ punchTimeArr.endTime }}</td>
+            <td>{{ (punchTimeArr.startTime || "").split(".")[0] }}</td>
+            <td>{{ (punchTimeArr.endTime || "").split(".")[0] }}</td>
           </tr>
         </tbody>
       </table>

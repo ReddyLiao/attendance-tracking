@@ -21,8 +21,9 @@
               {{
                 (content.duration || "")
                   .replace("PT", "")
-                  .replace("M", "分")
-                  .split(".")[0] + "秒"
+                  .replace("H", ":")
+                  .replace("M", ":")
+                  .split(".")[0]
               }}
             </td>
           </tr>
