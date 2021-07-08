@@ -1,15 +1,40 @@
 <template>
-  <v-calendar :attributes="attributes" :value="null" color="yellow" is-dark />
+  <v-calendar :attributes="attributes" :value="null" color="yellow" is-dark>
+    <template #day-popover>
+      <div>Using my own content now</div>
+    </template>
+  </v-calendar>
 </template>
-
 <script>
+import { onMounted, ref } from "vue";
+import { attendanceList } from "@/api/index.js";
+
 export default {
+  setup() {
+    onMounted(() => {
+      getAttendanceList();
+    });
+    const attendanceArr = ref([]);
+    const getAttendanceList = async () => {
+      const res = await attendanceList();
+      attendanceArr.value = res.data.body.content;
+      localStorage.setItem(
+        "attendanceRecord",
+        JSON.stringify(res.data.body.content)
+      );
+    };
+
+    return {
+      attendanceArr,
+      getAttendanceList,
+    };
+  },
   data() {
     const punchs = [
       {
         description: "Daily punch time",
         isComplete: false,
-        dates: { weekdays: 6 }, // 有打卡資料
+        dates: localStorage.getItem("attendanceRecord"), // 有打卡資料
         color: "indigo",
       },
     ];

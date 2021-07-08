@@ -24,42 +24,52 @@
       </tbody>
     </table>
   </div>
-  <div>
-    <h4>Request Leave</h4>
-    <table class="table table-bordered">
-      <tbody>
-        <tr>
-          <th>Leave Type</th>
-          <div id="v-model-select" class="demo">
-            <select v-model="selected">
-              <option disabled value="">select</option>
-              <option>Annual Leave</option>
-              <option>Sick Leave</option>
-              <option>Casual Leave</option>
-              <option>Other</option>
-            </select>
-          </div>
-        </tr>
-        <tr>
-          <td>Start Timek</td>
-          <DatePick />
-        </tr>
-        <tr>
-          <td>End Time</td>
-          <DatePick />
-          <td><button>Count</button></td>
-        </tr>
-        <tr>
-          <td>Total Time</td>
-          <td>Days:</td>
-          <td>Hours:</td>
-        </tr>
-        <tr>
-          <button>Send</button>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <h4>Request a Leave</h4>
+
+  <form class="row g-3">
+    <div class="col-md-4">
+      <label for="validationDefault01" class="form-label">Leave Type</label>
+      <select class="form-select">
+        <option selected>Select Leave Type</option>
+        <option class="dropdown-item" value="Annual">Annual Leave</option>
+        <option class="dropdown-item" value="Sick">Sick Leave</option>
+        <option class="dropdown-item" value="Casual">Casual Leave</option>
+        <option class="dropdown-item" value="Others">Others</option>
+      </select>
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Text input with dropdown button"
+        placeholder="Reason / Other leave type"
+        required
+      />
+    </div>
+    <div class="col-md-4">
+      <label for="validationStartTime" class="form-label">Leave Time</label>
+      <span class="input-group-text">@ Start Time</span>
+      <DatePick class="form-control" />
+    </div>
+    <div class="col-md-4">
+      <label for="validationEndTime" class="form-label">　 </label>
+      <span class="input-group-text">@ End Time</span>
+      <DatePick class="form-control" />
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Sum Time</button>
+    </div>
+    <div class="col-md-6">
+      <label for="validationDefault03" class="form-label">Total Time</label>
+    </div>
+    <div class="col-md-3">
+      <label for="validationDefault04" class="form-label">Days:</label>
+    </div>
+    <div class="col-md-3">
+      <label for="validationDefault05" class="form-label">Hours:</label>
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Send Requests</button>
+    </div>
+  </form>
 </template>
 <script>
 import DatePick from "@/components/DatePick.vue";
