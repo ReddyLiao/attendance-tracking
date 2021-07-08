@@ -46,7 +46,6 @@ export default {
     const attendanceArr = ref([]);
     const getAttendanceList = async () => {
       const res = await attendanceList();
-      console.log(res);
       attendanceArr.value = res.data.body.content;
     };
 

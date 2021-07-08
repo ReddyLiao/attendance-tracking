@@ -39,12 +39,15 @@ export default {
   components: { Clock },
   name: "Punch",
   setup() {
-    onMounted(() => {});
+    onMounted(() => {
+      punchTimeArr.value = JSON.parse(localStorage.getItem("dailyPunch"));
+    });
     const punchTimeArr = ref([]);
     const getPunchTime = async () => {
       const res = await punchTime();
       punchTimeArr.value = res.data.body;
       console.log(res);
+      localStorage.setItem("dailyPunch", JSON.stringify(res.data.body));
     };
 
     return {
