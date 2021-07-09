@@ -1,13 +1,13 @@
 <template>
   <h1>Clock</h1>
+  <Clock />
   <button
     type="button"
     class="btn btn-outline-info"
-    @click.prevent="getPunchTime"
+    @click.prevent="todayPunch"
   >
     Punch in
   </button>
-  <Clock />
   <div class="tablesize">
     <div class="table-responsive">
       <table class="table mt-3">
@@ -20,15 +20,12 @@
         </thead>
         <tbody>
           <tr>
-            <td>{{ (punchTimeArr.startTime || "").split(".")[0] }}</td>
-            <td>{{ (punchTimeArr.endTime || "").split(".")[0] }}</td>
+            <td>{{ punchTimeArr.startTime }}</td>
+            <td>{{ punchTimeArr.endTime }}</td>
             <td>
               {{
-                (punchTimeArr.duration || "")
-                  .replace("PT", "")
-                  .replace("H", ":")
-                  .replace("M", ":")
-                  .split(".")[0]
+                (punchTimeArr.duration || "").replace("PT", "").split(".")[0] +
+                "S"
               }}
             </td>
           </tr>
@@ -41,24 +38,26 @@
 <script>
 import Clock from "@/components/Clock.vue";
 import { onMounted, ref } from "vue";
-import { punchTime } from "@/api/index.js";
+import { punchTime, todayStatus } from "@/api/index.js";
 
 export default {
   components: { Clock },
   name: "Punch",
   setup() {
     onMounted(() => {
-      punchTimeArr.value = JSON.parse(localStorage.getItem("dailyPunch"));
+      getPunchTime();
     });
+    const todayPunch = () => {
+      punchTime();
+    };
     const punchTimeArr = ref([]);
     const getPunchTime = async () => {
-      const res = await punchTime();
+      const res = await todayStatus();
       punchTimeArr.value = res.data.body;
-
-      localStorage.setItem("dailyPunch", JSON.stringify(res.data.body));
     };
 
     return {
+      todayPunch,
       punchTimeArr,
       getPunchTime,
     };

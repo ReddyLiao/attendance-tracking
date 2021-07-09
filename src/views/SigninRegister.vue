@@ -2,7 +2,7 @@
   <div class="container">
     <div class="col-md-6 mx-auto text-center">
       <div class="header-title">
-        <h1 class="wv-heading--title">Login</h1>
+        <h1 class="wv-heading--title">Attendance Tracking</h1>
       </div>
     </div>
     <div class="row">

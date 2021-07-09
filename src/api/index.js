@@ -22,6 +22,13 @@ export function punchTime(data) {
     data,
   });
 }
+export function todayStatus(data) {
+  return request({
+    url: `/attendance/todayStatus`,
+    method: "post",
+    data,
+  });
+}
 export function register(data) {
   return request({
     url: `/user/register`,

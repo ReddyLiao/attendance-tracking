@@ -20,6 +20,13 @@ const routes = [
         path: "record",
         name: "Record",
         component: () => import("../components/Record.vue"),
+        children: [
+          {
+            path: "report",
+            name: "Report",
+            component: () => import("../components/Report.vue"),
+          },
+        ],
       },
       {
         path: "setting",

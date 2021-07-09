@@ -35,7 +35,6 @@
       </div>
     </div>
   </div>
-  <!-- <aside></aside> -->
 </template>
 <script>
 import Sidebar from "./Sidebar.vue";
@@ -44,13 +43,4 @@ export default {
   name: "Home",
 };
 </script>
-<style>
-aside {
-  float: left;
-  width: 200px;
-  height: 630px;
-  text-align: center;
-  background-color: #63808f;
-  padding: 20px 10px;
-}
-</style>
+<style></style>
