@@ -58,13 +58,13 @@
       <button class="btn btn-primary" type="submit">Sum Time</button>
     </div>
     <div class="col-md-6">
-      <label for="validationDefault03" class="form-label">Total Time</label>
+      <label class="form-label">Total Time</label>
     </div>
     <div class="col-md-3">
-      <label for="validationDefault04" class="form-label">Days:</label>
+      <label class="form-label">Days:</label>
     </div>
     <div class="col-md-3">
-      <label for="validationDefault05" class="form-label">Hours:</label>
+      <label class="form-label">Hours:</label>
     </div>
     <div class="col-12">
       <button class="btn btn-primary" type="submit">Send Requests</button>

@@ -22,7 +22,7 @@
                 .replace("PT", "")
                 .replace("H", ":")
                 .replace("M", ":")
-                .split(".")[0]
+                .split(".")[0] + "S"
             }}
           </td>
         </tr>

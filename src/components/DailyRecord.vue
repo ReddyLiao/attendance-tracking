@@ -28,59 +28,37 @@ export default {
       getAttendanceList();
     });
     const attendanceArr = ref([]);
+    const dailyPunchs = ref([]);
     const getAttendanceList = async () => {
       const res = await attendanceList();
       attendanceArr.value = res.data.body.content;
-      localStorage.setItem(
-        "attendanceRecord",
-        JSON.stringify(res.data.body.content)
-      );
+      dailyPunchs.value = res.data.body.content.map((a) => {
+        let temp = {
+          description: `Punch In ${a.startTime}\n
+            Punch Out ${a.endTime}\n
+            Working Time ${
+              (a.duration || "").replace("PT", "").split(".")[0] + "S"
+            }`,
+          isComplete: false,
+          dates: a.key.date,
+          color: "indigo",
+        };
+        return temp;
+      });
     };
 
-    /**
- var arr = [];
-var len = oFullResponse.results.length;
-for (var i = 0; i < len; i++) {
-    arr.push({
-        key: oFullResponse.results[i].label,
-        sortable: true,
-        resizeable: true
-    });
-}
- */
     return {
       attendanceArr,
       getAttendanceList,
+      incId: dailyPunchs.length,
+      dailyPunchs,
     };
   },
-  data() {
-    const punchs = [];
-    var dailyPuncharr = [
-      "2021-07-06",
-      "2021-07-07",
-      "2021-07-08",
-      "2021-07-09",
-    ];
-    for (var i = 0; i < dailyPuncharr.length; i++) {
-      punchs.push({
-        description: "Daily punch time2",
-        isComplete: false,
-        dates: dailyPuncharr[i],
-        color: "indigo",
-      });
-    }
-    console.log(punchs);
 
-    return {
-      incId: punchs.length,
-      punchs,
-    };
-  },
   computed: {
     attributes() {
       return [
-        // Attributes for punchs
-        ...this.punchs.map((punch) => ({
+        ...this.dailyPunchs.map((punch) => ({
           dates: punch.dates,
           highlight: {
             color: punch.color,

@@ -1,6 +1,5 @@
 <template>
   <h1>Clock</h1>
-  <Clock />
   <button
     type="button"
     class="btn btn-outline-info"
@@ -8,6 +7,7 @@
   >
     Punch in
   </button>
+  <Clock />
   <div class="tablesize">
     <div class="table-responsive">
       <table class="table mt-3">

@@ -5,48 +5,38 @@
     <input
       type="text"
       class="form-control"
-      id="formGroupExampleInput"
-      placeholder="Example input placeholder"
+      id="formCompanyName"
+      placeholder="Your Company Name "
     />
   </div>
   <div class="row g-3">
     <div class="col">
       <label class="form-label">Office Start Time</label>
-      <input
-        type="time"
-        class="form-control"
-        id="formOfficeStartTime"
-        placeholder="Example input placeholder"
-      />
+      <input type="time" class="form-control" id="formOfficeStartTime" />
     </div>
     <div class="col">
       <label class="form-label">Office End Time</label>
-      <input
-        type="time"
-        class="form-control"
-        id="OfficeEndTime"
-        placeholder="Another input placeholder"
-      />
+      <input type="time" class="form-control" id="OfficeEndTime" />
     </div>
   </div>
   <br />
   <h5>About Employee Leave</h5>
   <div class="row g-3">
     <div class="col">
-      <label for="formGroupExampleInput" class="form-label"
+      <label for="formEmployeeLeave" class="form-label"
         >Total Employee Leave</label
       ><input type="number" class="form-control" />
     </div>
     <div class="col">
-      <label for="formGroupExampleInput" class="form-label">Casual Leave</label>
+      <label for="formCasualLeave" class="form-label">Casual Leave</label>
       <input type="number" class="form-control" />
     </div>
     <div class="col">
-      <label for="formGroupExampleInput" class="form-label">Annual Leave</label>
+      <label for="formAnnualLeave" class="form-label">Annual Leave</label>
       <input type="number" class="form-control" />
     </div>
     <div class="col">
-      <label for="formGroupExampleInput" class="form-label">Sick Leave</label>
+      <label for="formSickLeave" class="form-label">Sick Leave</label>
       <input type="number" class="form-control" />
     </div>
   </div>

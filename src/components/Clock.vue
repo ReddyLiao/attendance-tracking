@@ -57,7 +57,7 @@ export default {
   text-align: center;
   position: relative;
   left: 30%;
-  top: 20%;
+  top: 10%;
   transform: translate(-50%, -50%);
   color: #121213;
   letter-spacing: 0.05em;
@@ -68,7 +68,7 @@ export default {
   text-align: center;
   position: relative;
   left: 30%;
-  top: 30%;
+  top: 10%;
   transform: translate(-50%, -50%);
   color: #121213;
   letter-spacing: 0.05em;
