@@ -3,22 +3,22 @@
     <header>
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <router-link class="nav-link active" href="#" to="punch"
+          <router-link class="nav-link active" href="#" to="/punch"
             >Punch</router-link
           >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" href="#" to="requests"
+          <router-link class="nav-link" href="#" to="/requests"
             >Requests</router-link
           >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" href="#" to="record"
+          <router-link class="nav-link" href="#" to="/record"
             >Record</router-link
           >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" href="#" to="setting"
+          <router-link class="nav-link" href="#" to="/setting"
             >Setting</router-link
           >
         </li>

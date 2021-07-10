@@ -5,6 +5,7 @@ const routes = [
     path: "/",
     name: "Navigation",
     component: () => import("@/views/Navigation.vue"),
+    redirect: "/punch",
     children: [
       {
         path: "punch",
@@ -19,12 +20,18 @@ const routes = [
       {
         path: "record",
         name: "Record",
+        redirect: "/record/dailyRecord",
         component: () => import("../components/Record.vue"),
         children: [
           {
             path: "report",
             name: "Report",
             component: () => import("../components/Report.vue"),
+          },
+          {
+            path: "dailyRecord",
+            name: "DailyRecord",
+            component: () => import("../components/DailyRecord.vue"),
           },
         ],
       },
