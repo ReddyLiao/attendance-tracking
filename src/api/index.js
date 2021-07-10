@@ -29,6 +29,13 @@ export function todayStatus(data) {
     data,
   });
 }
+export function dayOff(data) {
+  return request({
+    url: `/attendance/dayOff`,
+    method: "post",
+    data,
+  });
+}
 export function register(data) {
   return request({
     url: `/user/register`,

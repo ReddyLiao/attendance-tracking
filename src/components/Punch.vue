@@ -2,7 +2,7 @@
   <h1>Clock</h1>
   <Clock />
   <button
-    type="button"
+    type="submit"
     class="btn btn-outline-info"
     @click.prevent="todayPunch"
   >

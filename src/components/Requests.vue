@@ -24,58 +24,13 @@
       </tbody>
     </table>
   </div>
-  <h4>Request a Leave</h4>
-
-  <form class="row g-3">
-    <div class="col-md-4">
-      <label for="validationDefault01" class="form-label">Leave Type</label>
-      <select class="form-select">
-        <option selected>Select Leave Type</option>
-        <option class="dropdown-item" value="Annual">Annual Leave</option>
-        <option class="dropdown-item" value="Sick">Sick Leave</option>
-        <option class="dropdown-item" value="Casual">Casual Leave</option>
-        <option class="dropdown-item" value="Others">Others</option>
-      </select>
-      <input
-        type="text"
-        class="form-control"
-        aria-label="Text input with dropdown button"
-        placeholder="Reason / Other leave type"
-        required
-      />
-    </div>
-    <div class="col-md-4">
-      <label for="validationStartTime" class="form-label">Leave Time</label>
-      <span class="input-group-text"> Start Time</span>
-      <DatePick class="form-control" />
-    </div>
-    <div class="col-md-4">
-      <label for="validationEndTime" class="form-label">　 </label>
-      <span class="input-group-text"> End Time</span>
-      <DatePick class="form-control" />
-    </div>
-    <div class="col-12">
-      <button class="btn btn-primary" type="submit">Sum Time</button>
-    </div>
-    <div class="col-md-6">
-      <label class="form-label">Total Time</label>
-    </div>
-    <div class="col-md-3">
-      <label class="form-label">Days:</label>
-    </div>
-    <div class="col-md-3">
-      <label class="form-label">Hours:</label>
-    </div>
-    <div class="col-12">
-      <button class="btn btn-primary" type="submit">Send Requests</button>
-    </div>
-  </form>
+  <LeaveRequest />
 </template>
 <script>
-import DatePick from "@/components/DatePick.vue";
+import LeaveRequest from "@/components/LeaveRequest.vue";
 export default {
   components: {
-    DatePick,
+    LeaveRequest,
   },
   data() {
     return {
