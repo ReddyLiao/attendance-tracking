@@ -1,19 +1,50 @@
 <template>
+  <h3>Attendance Report</h3>
+  <hr />
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <!-- Toggle button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarButtonsExample"
+        aria-controls="navbarButtonsExample"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      ></button>
+
+      <div class="collapse navbar-collapse">
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"></li>
+        </ul>
+        <!-- Left links -->
+        <div class="d-flex align-items-center">
+          <button type="button" class="btn btn-success">Daily</button>
+          <button type="button" class="btn btn-success">Weekly</button>
+          <button type="button" class="btn btn-success">Monthly</button>
+        </div>
+      </div>
+      <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
   <div class="table-responsive">
     <table class="table mt-3">
       <thead>
-        <h3>Attendance Report</h3>
-        <hr />
         <tr>
           <th>Date</th>
           <th>Punch In Time</th>
           <th>Punch Out Time</th>
           <th>Working Time</th>
+          <th>Total Working Time</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="content in attendanceArr" :key="content">
           <td>{{ content.key.date }}</td>
+
           <td>{{ content.startTime }}</td>
           <td>{{ content.endTime }}</td>
           <td>
@@ -46,7 +77,9 @@ export default {
       const res = await attendanceList();
       attendanceArr.value = res.data.body.content;
     };
-
+    // sort;
+    // const date = "2021-07-06";
+    // router.push({ path: "searchresult", query: { date: `${date}` } });
     return {
       attendanceArr,
       getAttendanceList,

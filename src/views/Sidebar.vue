@@ -11,7 +11,9 @@
         min-vh-100
       "
     >
-      <span class="fs-5 d-none d-sm-inline">User</span>
+      <span class="fs-5 d-none d-sm-inline"
+        >Hi ! {{ userInfoArr.username }}</span
+      >
 
       <ul
         class="
@@ -68,8 +70,25 @@
   </div>
 </template>
 <script>
+import { userInfo } from "@/api/index.js";
+import { onMounted, ref } from "vue";
+
 export default {
   name: "sidebar",
+  setup() {
+    onMounted(() => {
+      getUserInfo();
+    });
+    const userInfoArr = ref([]);
+    const getUserInfo = async () => {
+      const ref = await userInfo();
+      userInfoArr.value = ref.data.body;
+    };
+    return {
+      userInfoArr,
+      getUserInfo,
+    };
+  },
 };
 </script>
 <style></style>

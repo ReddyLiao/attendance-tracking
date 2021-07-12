@@ -74,4 +74,22 @@ export default {
   letter-spacing: 0.05em;
   font-size: 80px;
 }
+// @media only screen and (min-width: 769px) {
+//   h1 {
+//     color: #03f;
+//     font-size: 70px;
+//   }
+// }
+// @media only screen and (min-width: 321px) and (max-width: 768px) {
+//   h1 {
+//     color: #f00;
+//     font-size: 30px;
+//   }
+// }
+// @media only screen and (min-width: 0px) and (max-width: 320px) {
+//   h1 {
+//     color: #6f0;
+//     font-size: 10px;
+//   }
+// }
 </style>

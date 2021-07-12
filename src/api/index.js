@@ -7,6 +7,13 @@ export function signIn(params) {
     params,
   });
 }
+export function userInfo(params) {
+  return request({
+    url: `/user/tokenInfo`,
+    method: "get",
+    params,
+  });
+}
 export function attendanceList(params) {
   return request({
     url: `/attendance/`,
