@@ -16,8 +16,32 @@
 
       <div class="collapse navbar-collapse">
         <!-- Left links -->
+
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"></li>
+          <li class="nav-item">
+            <!-- <span class="mx-2">Starts</span>
+            <input
+              type="date"
+              class="form-control me-2"
+              :value="timestamp1"
+              @input="$emit('update:timestamp1', $event.target.value)"
+              :max="today"
+            />
+            <span class="mx-2">Ends</span>
+            <input
+              type="date"
+              class="form-control me-2"
+              :value="timestamp2"
+              @input="$emit('update:timestamp2', $event.target.value)"
+              :max="today"
+            />
+            <button
+              class="btn btn-primary"
+              @click="getWithdraw(currentSort, 'search')"
+            >
+              Search
+            </button> -->
+          </li>
         </ul>
         <!-- Left links -->
         <div class="d-flex align-items-center">

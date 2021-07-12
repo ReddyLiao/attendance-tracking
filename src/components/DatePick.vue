@@ -1,5 +1,5 @@
 <template>
-  <v-date-picker v-model="date" mode="dateTime" :minute-increment="30">
+  <v-date-picker mode="dateTime" :minute-increment="30">
     <template v-slot="{ inputValue, inputEvents }">
       <input
         class="
@@ -17,12 +17,12 @@
 </template>
 <script>
 export default {
-  data() {
-    let date = new Date();
-    date.setMinutes(0, 0, 0);
-    return {
-      date,
-    };
-  },
+  // data() {
+  //   let date = new Date();
+  //   date.setMinutes(0, 0, 0);
+  //   return {
+  //     date,
+  //   };
+  // },
 };
 </script>
