@@ -1,10 +1,12 @@
 <template>
-  <div class="date">
-    {{ dateTime.years }}/{{ dateTime.months + 1 }}/{{ dateTime.dates }}
-    {{ week[dateTime.weeks] }}
-  </div>
-  <div class="clock">
-    {{ dateTime.hours }}:{{ dateTime.minutes }}:{{ dateTime.seconds }}
+  <div class="date-clock">
+    <div class="date">
+      {{ dateTime.years }}/{{ dateTime.months + 1 }}/{{ dateTime.dates }}
+      {{ week[dateTime.weeks] }}
+    </div>
+    <div class="clock">
+      {{ dateTime.hours }}:{{ dateTime.minutes }}:{{ dateTime.seconds }}
+    </div>
   </div>
 </template>
 
@@ -56,40 +58,41 @@ export default {
   font-family: "Share Tech Mono", monospace;
   text-align: center;
   position: relative;
-  left: 30%;
-  top: 10%;
-  transform: translate(-50%, -50%);
+  left: 5px;
+
   color: #121213;
   letter-spacing: 0.05em;
-  font-size: 50px;
+  font-size: 45px;
 }
 .clock {
   font-family: "Share Tech Mono", monospace;
   text-align: center;
   position: relative;
-  left: 30%;
-  top: 10%;
-  transform: translate(-50%, -50%);
+  left: 5px;
+
   color: #121213;
   letter-spacing: 0.05em;
-  font-size: 80px;
+  font-size: 70px;
 }
-// @media only screen and (min-width: 769px) {
-//   h1 {
-//     color: #03f;
-//     font-size: 70px;
-//   }
-// }
-// @media only screen and (min-width: 321px) and (max-width: 768px) {
-//   h1 {
-//     color: #f00;
-//     font-size: 30px;
-//   }
-// }
-// @media only screen and (min-width: 0px) and (max-width: 320px) {
-//   h1 {
-//     color: #6f0;
-//     font-size: 10px;
-//   }
-// }
+.date-clock {
+  /* Small devices (landscape phones, 576px and up) */
+  @media (min-width: 576px) {
+    width: 210px;
+  }
+
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+    width: 260px;
+  }
+
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+    width: 320px;
+  }
+
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    width: 380px;
+  }
+}
 </style>

@@ -16,7 +16,7 @@ export function userInfo(params) {
 }
 export function attendanceList(params) {
   return request({
-    url: `/attendance/`,
+    url: `/attendance/?sort=key.date,desc`,
     method: "get",
     params,
   });

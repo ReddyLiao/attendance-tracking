@@ -25,16 +25,23 @@
         id="info"
       >
         <li class="nav-item">
-          <span class="ms-1 d-none d-sm-inline">Item</span>
+          <span class="ms-1 d-none d-sm-inline"></span>
         </li>
         <li>
-          <span class="ms-1 d-none d-sm-inline">Item</span>
+          <span class="ms-1 d-none d-sm-inline">Office Start Time</span><br />
+          <span class="ms-1 d-none d-sm-inline">{{
+            userInfoArr.startTime
+          }}</span>
         </li>
         <li>
-          <span class="ms-1 d-none d-sm-inline">Item</span>
+          <span class="ms-1 d-none d-sm-inline">Office End Time</span><br />
+          <span class="ms-1 d-none d-sm-inline">{{ userInfoArr.endTime }}</span>
         </li>
         <li>
-          <span class="ms-1 d-none d-sm-inline">Item</span>
+          <span class="ms-1 d-none d-sm-inline">Buffer time</span><br />
+          <span class="ms-1 d-none d-sm-inline"
+            >{{ userInfoArr.bufferTime }} minutes</span
+          >
         </li>
         <li>
           <a
@@ -51,12 +58,12 @@
           >
             <li class="w-100">
               <a href="#" to="setting" class="nav-link px-0">
-                <span class="d-none d-sm-inline">Company Setup</span> 1</a
+                <span class="d-none d-sm-inline">Company Setup</span></a
               >
             </li>
             <li>
               <a href="#" class="nav-link px-0">
-                <span class="d-none d-sm-inline">Change Password</span> 2</a
+                <span class="d-none d-sm-inline">Change Password</span></a
               >
             </li>
           </ul>

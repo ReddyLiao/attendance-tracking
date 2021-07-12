@@ -3,7 +3,7 @@
   <form class="row g-3">
     <div class="col-md-4">
       <label for="validationDefault01" class="form-label">Leave Type</label>
-      <select class="form-select" v-model="selected">
+      <select class="form-select" v-model="reqArr.type">
         <option disabled value="">Select Leave Type</option>
         <option class="dropdown-item" value="Annual">Annual Leave</option>
         <option class="dropdown-item" value="Sick">Sick Leave</option>
@@ -15,7 +15,7 @@
         type="text"
         class="form-control"
         placeholder="Reason / Other leave type"
-        v-model="reason"
+        v-model="reqArr.note"
       />
       <span>{{ reason }}</span>
       <!-- required -->
@@ -23,16 +23,12 @@
     <div class="col-md-4">
       <label for="validationStartTime" class="form-label">Leave Time</label>
       <span class="input-group-text"> Start Time</span>
-      <div class="form-control">
-        <DatePick class="form-control" v-model="date1" />
-      </div>
-      <span>{{ date1 }}</span>
+      <DatePick class="form-control" v-model="date1" />
     </div>
     <div class="col-md-4">
       <label for="validationEndTime" class="form-label">　 </label>
       <span class="input-group-text"> End Time</span>
       <DatePick class="form-control" v-model="date2" />
-      <span>{{ date2 }}</span>
     </div>
     <div class="col-12">
       <button class="btn btn-primary" type="button">Sum Time</button>
@@ -46,8 +42,11 @@
     <div class="col-md-3">
       <label class="form-label">Hours:</label>
     </div>
+    <div class="col-md-3">
+      <label class="form-label">Minutes:</label>
+    </div>
     <div class="col-12">
-      <button class="btn btn-primary" type="submit" @click="test">
+      <button class="btn btn-primary" type="button" @click="sendDayOff">
         Send Requests
       </button>
     </div>
@@ -55,55 +54,43 @@
 </template>
 <script>
 import { dayOff } from "@/api/index.js";
-import { reactive, ref } from "vue";
+import { reactive, ref, computed } from "vue";
 import DatePick from "@/components/DatePick.vue";
 export default {
   components: {
     DatePick,
   },
-  data() {
-    let date1 = new Date();
-    let date2 = new Date();
-
-    return {
-      selected: "",
-      reason: "",
-      date1,
-      date2,
-    };
-  },
   setup() {
-    let inputData = {
-      selected: "",
-    };
-    const requestArr = reactive({
+    const date1 = ref(new Date());
+    const date2 = ref(new Date());
+    const reqArr = reactive({
       note: "",
-      timestamp1: "",
-      timestamp2: "",
+      timestamp1: computed(() => Date.parse(date1.value)),
+      timestamp2: computed(() => Date.parse(date2.value)),
       type: "",
     });
-    // const dayOff = reactive({
-    //   note: "string",
-    //   timestamp1: "string",
-    //   timestamp2: "string",
-    //   type: "string",
-    // });
-    // const sendDayOff = async () => {
-    //   const ref = await dayOff();
-    // };
-    const test = () => {
-      let data = {
-        selected: "",
-        reason: "",
-      };
-      console.log(inputData);
+    const sendDayOff = async () => {
+      console.log(date2.value);
+      console.log(date1.value);
+      const res = await dayOff(reqArr);
+      const status = res.data.status;
+      console.log(res);
+      status === "ok" ? alert("sent successfully") : alert("Please try again");
     };
     return {
-      inputData,
-      requestArr,
-      test,
+      date1,
+      date2,
+      sendDayOff,
+      reqArr,
     };
   },
+  //時間差
+  // let totalTime = timestamp2 - timestamp1;
+  // let days = Math.floor(totalTime / (24 * 3600 * 1000));
+  // let leave1 = totalTime % (24 * 3600 * 1000);
+  // let hours = Math.floor(leave1 / (3600 * 1000));
+  // var leave2 = leave1 % (3600 * 1000);
+  // var minutes = Math.floor(leave2 / (60 * 1000));
 };
 </script>
 

@@ -96,7 +96,7 @@ export default {
       console.log(res.data.msg);
       console.log(res);
       if (status === "ok") {
-        alert("註冊成功");
+        alert("Registration Successful !");
         userSignIn();
       } else {
         alert(res.data.msg);
