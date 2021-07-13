@@ -26,7 +26,7 @@
       <DatePick class="form-control" v-model="date1" />
     </div>
     <div class="col-md-4">
-      <label for="validationEndTime" class="form-label">　 </label>
+      <label for="validationEndTime" class="form-label"></label>
       <span class="input-group-text"> End Time</span>
       <DatePick class="form-control" v-model="date2" />
     </div>

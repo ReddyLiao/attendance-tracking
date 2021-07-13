@@ -51,14 +51,24 @@ export default {
     });
     const punchTimeArr = ref([]);
     const todayPunch = async () => {
-      const ref = await punchTime();
+      const res = await punchTime();
       console.log(ref);
-      punchTimeArr.value = ref.data.body;
-      localStorage.setItem("todayPunch", ref.data.body);
+      if (res.data.body.type === "work") {
+        punchTimeArr.value = res.data.body;
+        localStorage.setItem("todayPunch", res.data.body);
+      } else {
+        punchTimeArr.value = res.data.body.type;
+        console.log(res.data.body.type);
+        alert(`Today had ${res.data.body.type} leave`);
+      }
     };
     const getPunchTime = async () => {
       const res = await todayStatus();
-      punchTimeArr.value = res.data.body;
+      if (res.data.body.type === "work") {
+        punchTimeArr.value = res.data.body;
+      } else {
+        punchTimeArr.value = res.data.body.type;
+      }
     };
 
     return {

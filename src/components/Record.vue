@@ -1,19 +1,19 @@
 <template>
   <h1>Record</h1>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <!-- Toggle button -->
+    <div class="container-fluid">
       <button
         class="navbar-toggler"
         type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#navbarButtonsExample"
-        aria-controls="navbarButtonsExample"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
         aria-expanded="false"
         aria-label="Toggle navigation"
-      ></button>
-
-      <div class="collapse navbar-collapse">
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"></li>
@@ -32,9 +32,7 @@
           >
         </div>
       </div>
-      <!-- Collapsible wrapper -->
     </div>
-    <!-- Container wrapper -->
   </nav>
   <div>
     <router-view />
@@ -47,4 +45,20 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.navbar {
+  @media (min-width: 576px) {
+    width: 210px;
+  }
+
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+    width: 260px;
+  }
+
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+    width: 320px;
+  }
+}
+</style>

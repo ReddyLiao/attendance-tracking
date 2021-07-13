@@ -43,6 +43,13 @@ export function dayOff(data) {
     data,
   });
 }
+export function updatePassword(data) {
+  return request({
+    url: `/user/updatePassword`,
+    method: "post",
+    data,
+  });
+}
 export function register(data) {
   return request({
     url: `/user/register`,

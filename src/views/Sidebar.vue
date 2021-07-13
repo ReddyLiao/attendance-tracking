@@ -32,16 +32,19 @@
           <span class="ms-1 d-none d-sm-inline">{{
             userInfoArr.startTime
           }}</span>
+          <div class="p-3"></div>
         </li>
         <li>
           <span class="ms-1 d-none d-sm-inline">Office End Time</span><br />
           <span class="ms-1 d-none d-sm-inline">{{ userInfoArr.endTime }}</span>
+          <div class="p-3"></div>
         </li>
         <li>
           <span class="ms-1 d-none d-sm-inline">Buffer time</span><br />
           <span class="ms-1 d-none d-sm-inline"
             >{{ userInfoArr.bufferTime }} minutes</span
           >
+          <div class="p-3"></div>
         </li>
         <li>
           <a

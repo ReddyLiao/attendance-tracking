@@ -58,7 +58,7 @@ export default {
   font-family: "Share Tech Mono", monospace;
   text-align: center;
   position: relative;
-  left: 5px;
+  left: 10px;
 
   color: #121213;
   letter-spacing: 0.05em;
@@ -68,7 +68,7 @@ export default {
   font-family: "Share Tech Mono", monospace;
   text-align: center;
   position: relative;
-  left: 5px;
+  left: 10px;
 
   color: #121213;
   letter-spacing: 0.05em;

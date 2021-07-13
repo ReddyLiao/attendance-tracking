@@ -38,7 +38,20 @@ const routes = [
       {
         path: "setting",
         name: "Setting",
+        redirect: "/setting/companySetup",
         component: () => import("../components/Setting.vue"),
+        children: [
+          {
+            path: "companySetup",
+            name: "CompanySetup",
+            component: () => import("../components/CompanySetup.vue"),
+          },
+          {
+            path: "changPassword",
+            name: "ChangePassword",
+            component: () => import("../components/ChangePassword.vue"),
+          },
+        ],
       },
     ],
   },

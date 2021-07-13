@@ -1,48 +1,42 @@
 <template>
-  <h3>Company Setting</h3>
-  <div class="mb-3">
-    <label for="formGroupExampleInput" class="form-label">Company Name</label>
-    <input
-      type="text"
-      class="form-control"
-      id="formCompanyName"
-      placeholder="Your Company Name "
-    />
-  </div>
-  <div class="row g-3">
-    <div class="col">
-      <label class="form-label">Office Start Time</label>
-      <input type="time" class="form-control" id="formOfficeStartTime" />
+  <h3>Setting</h3>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <!-- Toggle button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"></li>
+        </ul>
+        <!-- Left links -->
+        <div class="d-flex align-items-center">
+          <router-link class="nav-link" to="/setting/companySetup"
+            ><button type="button" class="btn btn-outline-warning">
+              Company Setup
+            </button></router-link
+          >
+          <router-link class="nav-link" to="/setting/changPassword"
+            ><button type="button" class="btn btn-outline-warning">
+              Change Password
+            </button></router-link
+          >
+        </div>
+      </div>
     </div>
-    <div class="col">
-      <label class="form-label">Office End Time</label>
-      <input type="time" class="form-control" id="OfficeEndTime" />
-    </div>
-  </div>
-  <br />
-  <h5>About Employee Leave</h5>
-  <div class="row g-3">
-    <div class="col">
-      <label for="formEmployeeLeave" class="form-label"
-        >Total Employee Leave</label
-      ><input type="number" class="form-control" />
-    </div>
-    <div class="col">
-      <label for="formCasualLeave" class="form-label">Casual Leave</label>
-      <input type="number" class="form-control" />
-    </div>
-    <div class="col">
-      <label for="formAnnualLeave" class="form-label">Annual Leave</label>
-      <input type="number" class="form-control" />
-    </div>
-    <div class="col">
-      <label for="formSickLeave" class="form-label">Sick Leave</label>
-      <input type="number" class="form-control" />
-    </div>
-  </div>
-  <br />
-  <div class="col-12">
-    <button class="btn btn-primary" type="submit">Save</button>
+  </nav>
+  <div>
+    <router-view />
   </div>
 </template>
 
