@@ -65,32 +65,48 @@
         </tr>
       </tbody>
     </table>
+    <Pagination
+      :page="getPage.page"
+      :totalPages="totalPages"
+      @changePage="changePage"
+    />
   </div>
 </template>
-
 <script>
 import { onMounted, ref } from "vue";
 import { attendanceList } from "@/api/index.js";
 import DatePickRange from "@/components/DatePickRange.vue";
-
+import Pagination from "@/components/Pagination.vue";
+import { usePage } from "@/composition/page.js";
 export default {
-  components: { DatePickRange },
+  components: { DatePickRange, Pagination },
   setup() {
     onMounted(() => {
       getAttendanceList();
     });
+    const { getPage, totalPages } = usePage();
     const attendanceArr = ref([]);
     const getAttendanceList = async () => {
-      const res = await attendanceList();
+      const res = await attendanceList(getPage);
       attendanceArr.value = res.data.body.content;
+      console.log(res);
+      totalPages.value = res.data.body.totalPages;
     };
-    // sort;
-
+    // changpage
+    const changePage = (page) => {
+      getPage.page = page;
+      getAttendanceList(getPage.value);
+      console.log(getPage.value);
+    };
     return {
+      changePage,
+      getPage,
+      totalPages,
       attendanceArr,
       getAttendanceList,
     };
   },
 };
 </script>
+
 <style scoped></style>

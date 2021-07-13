@@ -32,6 +32,7 @@ export default {
     const getAttendanceList = async () => {
       const res = await attendanceList();
       attendanceArr.value = res.data.body.content;
+      console.log(res);
       dailyPunchs.value = res.data.body.content.map((a) => {
         let temp = {
           description: `Punch In ${a.startTime}\n
