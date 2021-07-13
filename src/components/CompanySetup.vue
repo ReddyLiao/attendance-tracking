@@ -12,11 +12,15 @@
   <div class="row g-3">
     <div class="col">
       <label class="form-label">Office Start Time</label>
-      <input type="time" class="form-control" id="formOfficeStartTime" />
+      <input type="time" class="form-control" v-model="start" />
     </div>
     <div class="col">
       <label class="form-label">Office End Time</label>
-      <input type="time" class="form-control" id="OfficeEndTime" />
+      <input type="time" class="form-control" v-model="end" />
+    </div>
+    <div class="col">
+      <label class="form-label">Buffer Time(minute)</label>
+      <input type="number" class="form-control" v-model="infoArr.bufferTime" />
     </div>
   </div>
   <br />
@@ -42,12 +46,43 @@
   </div>
   <br />
   <div class="col-12">
-    <button class="btn btn-primary" type="submit">Save</button>
+    <input
+      class="btn btn-primary"
+      type="submit"
+      @click="saveUserInfo"
+      value="Save"
+    />
   </div>
 </template>
 
 <script>
-export default {};
+import { setUserInfo } from "@/api/index.js";
+import { reactive, computed, ref } from "@vue/reactivity";
+export default {
+  setup() {
+    const start = ref();
+    const end = ref();
+    const infoArr = reactive({
+      bufferTime: "",
+      end: computed(() => end.value),
+      start: computed(() => start.value),
+    });
+    const saveUserInfo = async () => {
+      const res = await setUserInfo(infoArr);
+      const status = res.data.status;
+      console.log(res);
+      if (status === "ok") {
+        alert("Saved successfully");
+      } else alert("Please try again");
+    };
+    return {
+      start,
+      end,
+      infoArr,
+      saveUserInfo,
+    };
+  },
+};
 </script>
 
 <style></style>

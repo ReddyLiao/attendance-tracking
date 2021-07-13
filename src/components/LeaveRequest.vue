@@ -70,8 +70,6 @@ export default {
       type: "",
     });
     const sendDayOff = async () => {
-      console.log(date2.value);
-      console.log(date1.value);
       const res = await dayOff(reqArr);
       const status = res.data.status;
       console.log(res);

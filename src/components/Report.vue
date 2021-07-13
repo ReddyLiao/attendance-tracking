@@ -18,7 +18,12 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"></li>
+          <li class="d-flex align-items-center">
+            <DatePickRange />
+            <button type="button" class="btn btn-outline-success">
+              Search
+            </button>
+          </li>
         </ul>
         <!-- Left links -->
         <div class="d-flex align-items-center">
@@ -66,9 +71,10 @@
 <script>
 import { onMounted, ref } from "vue";
 import { attendanceList } from "@/api/index.js";
+import DatePickRange from "@/components/DatePickRange.vue";
 
 export default {
-  components: {},
+  components: { DatePickRange },
   setup() {
     onMounted(() => {
       getAttendanceList();
