@@ -40,7 +40,8 @@ export default {
             Working Time ${
               (a.duration || "").replace("PT", "").split(".")[0] + "S"
             }`,
-          isComplete: false,
+          // isComplete: false,
+          status: a.type,
           dates: a.key.date,
           color: "indigo",
         };
@@ -59,21 +60,24 @@ export default {
   computed: {
     attributes() {
       return [
-        ...this.dailyPunchs.map((punch) => ({
-          dates: punch.dates,
-          highlight: {
-            color: punch.color,
-            fillMode: "light",
-            // class: punch.isComplete ? "opacity-75" : "",
-          },
+        ...this.dailyPunchs.map((punch) => {
+          console.log(punch);
 
-          popover: {
-            label: punch.description,
-            visibility: "click",
-            hideIndicator: true,
-          },
-          customData: punch,
-        })),
+          return {
+            dates: punch.dates,
+            highlight: {
+              fillMode: "light",
+              // class: punch.isComplete ? "opacity-75" : "",
+              color: punch.status === "work" ? "indigo" : "red",
+            },
+            popover: {
+              label: punch.description,
+              visibility: "click",
+              hideIndicator: true,
+            },
+            customData: punch,
+          };
+        }),
       ];
     },
   },
