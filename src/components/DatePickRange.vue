@@ -1,5 +1,5 @@
 <template>
-  <v-date-picker v-model="range" :max-date="new Date()" is-range>
+  <v-date-picker :max-date="new Date()" is-range>
     <template v-slot="{ inputValue, inputEvents }">
       <div class="flex justify-center items-center">
         <input
@@ -33,13 +33,13 @@
 </template>
 <script>
 export default {
-  data() {
-    return {
-      range: {
-        start: new Date(),
-        end: new Date(),
-      },
-    };
-  },
+  // data() {
+  //   return {
+  //     range: {
+  //       start: new Date(),
+  //       end: new Date(),
+  //     },
+  //   };
+  // },
 };
 </script>

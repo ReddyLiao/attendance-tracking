@@ -19,8 +19,12 @@
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="d-flex align-items-center">
-            <DatePickRange />
-            <button type="button" class="btn btn-outline-success">
+            <DatePickRange v-model="range" />
+            <button
+              type="button"
+              class="btn btn-outline-success"
+              @click="getReportList"
+            >
               Search
             </button>
           </li>
@@ -32,9 +36,7 @@
           <button type="button" class="btn btn-success">Monthly</button>
         </div>
       </div>
-      <!-- Collapsible wrapper -->
     </div>
-    <!-- Container wrapper -->
   </nav>
   <div class="table-responsive">
     <table class="table mt-3">
@@ -73,13 +75,14 @@
   </div>
 </template>
 <script>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, reactive, computed } from "vue";
 import { attendanceList } from "@/api/index.js";
 import DatePickRange from "@/components/DatePickRange.vue";
 import Pagination from "@/components/Pagination.vue";
 import { usePage } from "@/composition/page.js";
 export default {
-  components: { DatePickRange, Pagination },
+  components: { Pagination, DatePickRange },
+
   setup() {
     onMounted(() => {
       getAttendanceList();
@@ -93,17 +96,30 @@ export default {
       totalPages.value = res.data.body.totalPages;
     };
     // changpage
-    const changePage = (page) => {
+    let changePage = (page) => {
       getPage.page = page;
       getAttendanceList(getPage.value);
-      console.log(getPage.value);
     };
+    const range = ref(new Date());
+    const dateRang = reactive({
+      timestamp1: computed(() => Date.parse(range.value.start)),
+      timestamp2: computed(() => Date.parse(range.value.end)),
+    });
+    const getReportList = async () => {
+      const res = await attendanceList(dateRang);
+      attendanceArr.value = res.data.body.content;
+      totalPages.value = res.data.body.totalPages;
+    };
+   
     return {
-      changePage,
-      getPage,
-      totalPages,
       attendanceArr,
       getAttendanceList,
+      range,
+      dateRang,
+      getReportList,
+      getPage,
+      changePage,
+      totalPages,
     };
   },
 };

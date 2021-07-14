@@ -80,23 +80,17 @@
   </div>
 </template>
 <script>
-import { userInfo } from "@/api/index.js";
-import { onMounted, ref } from "vue";
-
+import { onMounted, computed } from "vue";
+import { useStore } from "vuex";
 export default {
   name: "sidebar",
   setup() {
     onMounted(() => {
-      getUserInfo();
+      store.dispatch("getUserInfo");
     });
-    const userInfoArr = ref([]);
-    const getUserInfo = async () => {
-      const ref = await userInfo();
-      userInfoArr.value = ref.data.body;
-    };
+    const store = useStore();
     return {
-      userInfoArr,
-      getUserInfo,
+      userInfoArr: computed(() => store.getters.getUserInfo),
     };
   },
 };

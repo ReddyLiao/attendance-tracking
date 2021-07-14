@@ -58,8 +58,10 @@
 <script>
 import { setUserInfo } from "@/api/index.js";
 import { reactive, computed, ref } from "@vue/reactivity";
+import { useStore } from "vuex";
 export default {
   setup() {
+    const store = useStore();
     const start = ref();
     const end = ref();
     const infoArr = reactive({
@@ -73,6 +75,7 @@ export default {
       console.log(res);
       if (status === "ok") {
         alert("Saved successfully");
+        store.dispatch("getUserInfo");
       } else alert("Please try again");
     };
     return {
@@ -80,6 +83,7 @@ export default {
       end,
       infoArr,
       saveUserInfo,
+      userInfoArr: computed(() => store.getters.getUserInfo),
     };
   },
 };
