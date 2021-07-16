@@ -6,16 +6,6 @@
     is-dark
     is-expanded
   >
-    <div>
-      <!-- <div class="text-xs text-gray-300 font-semibold text-center">
-        {{ dayTitle }}
-      </div>
-      <ul>
-        <li v-for="{ key, customData } in attributes" :key="key">
-          {{ customData.description }}
-        </li>
-      </ul> -->
-    </div>
   </v-calendar>
 </template>
 <script>
@@ -29,10 +19,13 @@ export default {
     });
     const attendanceArr = ref([]);
     const dailyPunchs = ref([]);
+    const sort = {
+      size: 30,
+      sort: "key.date,desc",
+    };
     const getAttendanceList = async () => {
-      const res = await attendanceList();
+      const res = await attendanceList(sort);
       attendanceArr.value = res.data.body.content;
-      console.log(res);
       dailyPunchs.value = res.data.body.content.map((a) => {
         let temp = {
           description: `Punch In ${a.startTime}\n
@@ -48,7 +41,6 @@ export default {
         return temp;
       });
     };
-
     return {
       attendanceArr,
       getAttendanceList,
@@ -61,8 +53,6 @@ export default {
     attributes() {
       return [
         ...this.dailyPunchs.map((punch) => {
-          console.log(punch);
-
           return {
             dates: punch.dates,
             highlight: {
@@ -74,6 +64,7 @@ export default {
               label: punch.description,
               visibility: "click",
               hideIndicator: true,
+              // isInteractive: true, 編輯或運算
             },
             customData: punch,
           };

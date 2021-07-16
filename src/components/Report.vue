@@ -20,11 +20,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="d-flex align-items-center">
             <DatePickRange v-model="range" />
-            <button
-              type="button"
-              class="btn btn-outline-success"
-              @click="getReportList"
-            >
+            <button class="btn btn-outline-success" @click="getReportList()">
               Search
             </button>
           </li>
@@ -50,14 +46,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="content in attendanceArr" :key="content">
-          <td>{{ content.key.date }}</td>
+        <tr v-for="item in data" :key="item">
+          <td>{{ item.key.date }}</td>
 
-          <td>{{ content.startTime }}</td>
-          <td>{{ content.endTime }}</td>
+          <td>{{ item.startTime }}</td>
+          <td>{{ item.endTime }}</td>
           <td>
             {{
-              (content.duration || "")
+              (item.duration || "")
                 .replace("PT", "")
                 .replace("H", ":")
                 .replace("M", ":")
@@ -68,6 +64,7 @@
       </tbody>
     </table>
     <Pagination
+      @getData="getData(attendanceList, currentSort)"
       :page="getPage.page"
       :totalPages="totalPages"
       @changePage="changePage"
@@ -75,51 +72,54 @@
   </div>
 </template>
 <script>
-import { onMounted, ref, reactive, computed } from "vue";
+import { onMounted, watch, ref, reactive, computed } from "vue";
 import { attendanceList } from "@/api/index.js";
 import DatePickRange from "@/components/DatePickRange.vue";
 import Pagination from "@/components/Pagination.vue";
-import { usePage } from "@/composition/page.js";
+import { useSearch } from "@/composition/search.js";
+
 export default {
   components: { Pagination, DatePickRange },
 
   setup() {
     onMounted(() => {
-      getAttendanceList();
+      currentSort.value = "key.date,desc";
+      getData(attendanceList, currentSort.value);
     });
-    const { getPage, totalPages } = usePage();
-    const attendanceArr = ref([]);
-    const getAttendanceList = async () => {
-      const res = await attendanceList(getPage);
-      attendanceArr.value = res.data.body.content;
-      console.log(res);
-      totalPages.value = res.data.body.totalPages;
-    };
-    // changpage
-    let changePage = (page) => {
-      getPage.page = page;
-      getAttendanceList(getPage.value);
-    };
+    const {
+      currentSort,
+      dateRang,
+      getData,
+      getPage,
+      totalPages,
+      data,
+      timestamp1,
+      timestamp2,
+      changePage,
+    } = useSearch();
+    watch(() => getData(attendanceList, currentSort.value));
+
     const range = ref(new Date());
-    const dateRang = reactive({
-      timestamp1: computed(() => Date.parse(range.value.start)),
-      timestamp2: computed(() => Date.parse(range.value.end)),
-    });
     const getReportList = async () => {
-      const res = await attendanceList(dateRang);
-      attendanceArr.value = res.data.body.content;
-      totalPages.value = res.data.body.totalPages;
+      dateRang.timestamp1 = computed(() => Date.parse(range.value.start));
+      dateRang.timestamp2 = computed(() => Date.parse(range.value.end));
+      console.log(range.value.start);
+
+      await getData(attendanceList, currentSort.value);
     };
-   
     return {
-      attendanceArr,
-      getAttendanceList,
       range,
       dateRang,
       getReportList,
       getPage,
-      changePage,
       totalPages,
+      changePage,
+      timestamp1,
+      timestamp2,
+      currentSort,
+      data,
+      getData,
+      attendanceList,
     };
   },
 };

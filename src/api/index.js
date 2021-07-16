@@ -16,19 +16,11 @@ export function userInfo(params) {
 }
 export function attendanceList(params) {
   return request({
-    url: `/attendance/?sort=key.date,desc`,
+    url: `/attendance/`,
     method: "get",
     params,
   });
 }
-export function reportList(params) {
-  return request({
-    url: `/attendance/?sort=key.date,desc`,
-    method: "get",
-    params,
-  });
-}
-
 export function punchTime(data) {
   return request({
     url: `/attendance/`,

@@ -38,9 +38,18 @@
 <script>
 export default {
   props: ["totalPages", "page"],
-  emits: ["changePage"],
+  emits: ["changePage", "getData"],
   setup(props, { emit }) {
-    const updatePage = (page) => emit("changePage", page);
+    const updatePage = (page) => {
+      if (page + 1 >= props.totalPages) {
+        emit("changePage", props.totalPages - 1);
+      } else if (page + 1 < 1) {
+        emit("changePage", 0);
+      } else {
+        emit("changePage", page);
+      }
+      emit("getData");
+    };
     return {
       ...props,
       updatePage,
