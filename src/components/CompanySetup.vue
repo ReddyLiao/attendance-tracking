@@ -5,7 +5,7 @@
     <input
       type="text"
       class="form-control"
-      id="formCompanyName"
+      v-model="companyName"
       placeholder="Your Company Name "
     />
   </div>
@@ -27,21 +27,36 @@
   <h5>About Employee Leave</h5>
   <div class="row g-3">
     <div class="col">
-      <label for="formEmployeeLeave" class="form-label"
-        >Total Employee Leave</label
-      ><input type="number" class="form-control" />
+      <label for="formAnnualLeave" class="form-label">Annual Leave</label>
+      <input
+        type="number"
+        class="form-control"
+        placeholder="0"
+        v-model="infoArr.originAnnualLeave"
+      />
     </div>
     <div class="col">
       <label for="formCasualLeave" class="form-label">Casual Leave</label>
-      <input type="number" class="form-control" />
-    </div>
-    <div class="col">
-      <label for="formAnnualLeave" class="form-label">Annual Leave</label>
-      <input type="number" class="form-control" />
+      <input
+        type="number"
+        class="form-control"
+        placeholder="0"
+        v-model="infoArr.originCcasualLeave"
+      />
     </div>
     <div class="col">
       <label for="formSickLeave" class="form-label">Sick Leave</label>
-      <input type="number" class="form-control" />
+      <input
+        type="number"
+        class="form-control"
+        placeholder="0"
+        v-model="infoArr.originSickLeave"
+      />
+    </div>
+    <div class="col">
+      <label for="formEmployeeLeave" class="form-label"
+        >Total Employee Leave</label
+      ><input type="number" class="form-control" placeholder="0" />
     </div>
   </div>
   <br />
@@ -65,6 +80,9 @@ export default {
     const start = ref();
     const end = ref();
     const infoArr = reactive({
+      originAnnualLeave: "",
+      originCasualLeave: "",
+      originSickLeave: "",
       bufferTime: "",
       end: computed(() => end.value),
       start: computed(() => start.value),
@@ -79,7 +97,7 @@ export default {
       } else alert("Please try again");
     };
     return {
-      start,
+      start, 
       end,
       infoArr,
       saveUserInfo,

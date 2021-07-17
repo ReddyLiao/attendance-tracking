@@ -3,7 +3,7 @@
   <form class="row g-3">
     <div class="col-md-4">
       <label for="validationDefault01" class="form-label">Leave Type</label>
-      <select class="form-select" v-model="reqArr.type">
+      <select class="form-select" v-model="reqArr.type" required>
         <option disabled value="">Select Leave Type</option>
         <option class="dropdown-item" value="Annual">Annual Leave</option>
         <option class="dropdown-item" value="Sick">Sick Leave</option>
@@ -39,14 +39,8 @@
     <div class="col-md-3">
       <label class="form-label">Days:</label>
     </div>
-    <div class="col-md-3">
-      <label class="form-label">Hours:</label>
-    </div>
-    <div class="col-md-3">
-      <label class="form-label">Minutes:</label>
-    </div>
     <div class="col-12">
-      <button class="btn btn-primary" type="button" @click="sendDayOff">
+      <button class="btn btn-primary" type="submit" @click="sendDayOff">
         Send Requests
       </button>
     </div>
@@ -56,6 +50,7 @@
 import { dayOff } from "@/api/index.js";
 import { reactive, ref, computed } from "vue";
 import DatePick from "@/components/DatePick.vue";
+import { useStore } from "vuex";
 export default {
   components: {
     DatePick,
