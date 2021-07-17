@@ -30,14 +30,8 @@
       <span class="input-group-text"> End Time</span>
       <DatePick class="form-control" v-model="date2" />
     </div>
-    <div class="col-12">
-      <button class="btn btn-primary" type="button">Sum Time</button>
-    </div>
-    <div class="col-md-6">
-      <label class="form-label">Total Time</label>
-    </div>
-    <div class="col-md-3">
-      <label class="form-label">Days:</label
+    <div class="col-md-3 mx-auto">
+      <label class="form-label">Total Days: </label
       >{{
         Math.floor((reqArr.timestamp2 - reqArr.timestamp1) / (24 * 3600 * 1000))
       }}
