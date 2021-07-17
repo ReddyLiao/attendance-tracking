@@ -37,7 +37,10 @@
       <label class="form-label">Total Time</label>
     </div>
     <div class="col-md-3">
-      <label class="form-label">Days:</label>
+      <label class="form-label">Days:</label
+      >{{
+        Math.floor((reqArr.timestamp2 - reqArr.timestamp1) / (24 * 3600 * 1000))
+      }}
     </div>
     <div class="col-12">
       <button class="btn btn-primary" type="submit" @click="sendDayOff">
@@ -48,9 +51,9 @@
 </template>
 <script>
 import { dayOff } from "@/api/index.js";
-import { reactive, ref, computed } from "vue";
+import { reactive, ref, computed, watch } from "vue";
 import DatePick from "@/components/DatePick.vue";
-import { useStore } from "vuex";
+
 export default {
   components: {
     DatePick,
@@ -64,12 +67,15 @@ export default {
       timestamp2: computed(() => Date.parse(date2.value)),
       type: "",
     });
+
     const sendDayOff = async () => {
+      console.log(reqArr);
       const res = await dayOff(reqArr);
       const status = res.data.status;
       console.log(res);
       status === "ok" ? alert("sent successfully") : alert("Please try again");
     };
+
     return {
       date1,
       date2,
@@ -77,13 +83,6 @@ export default {
       reqArr,
     };
   },
-  //時間差
-  // let totalTime = timestamp2 - timestamp1;
-  // let days = Math.floor(totalTime / (24 * 3600 * 1000));
-  // let leave1 = totalTime % (24 * 3600 * 1000);
-  // let hours = Math.floor(leave1 / (3600 * 1000));
-  // var leave2 = leave1 % (3600 * 1000);
-  // var minutes = Math.floor(leave2 / (60 * 1000));
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <h3>Setting</h3>
+  <h1>Setting</h1>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <!-- Toggle button -->

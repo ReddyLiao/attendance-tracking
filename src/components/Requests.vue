@@ -26,6 +26,7 @@
       </tbody>
     </table>
   </div>
+  <div class="p-3"></div>
   <LeaveRequest />
 </template>
 <script>

@@ -1,5 +1,4 @@
 import { usePage } from "@/composition/page.js";
-// import { useDate } from "@/composition/date.js";
 import { ref, reactive, computed } from "vue";
 
 export function useSearch() {
@@ -23,7 +22,6 @@ export function useSearch() {
     console.log(getPage);
 
     const res = await api(getPage);
-    // console.log(res);
     data.value = res.data.body.content;
     totalPages.value = res.data.body.totalPages;
   };

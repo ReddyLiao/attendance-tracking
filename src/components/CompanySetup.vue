@@ -1,17 +1,19 @@
 <template>
   <h4>Company Setting</h4>
   <div class="mb-3">
-    <label for="formGroupExampleInput" class="form-label">Company Name</label>
-    <input
-      type="text"
-      class="form-control"
-      v-model="companyName"
-      placeholder="Your Company Name "
-    />
+    <div class="col-md-4 mx-auto text-start">
+      <label for="formGroupExampleInput" class="form-label">Company Name</label>
+      <input
+        type="text"
+        class="form-control"
+        v-model="companyName"
+        placeholder="Your Company Name "
+      />
+    </div>
   </div>
-  <div class="row g-3">
+  <div class="row g-3 text-start">
     <div class="col">
-      <label class="form-label">Office Start Time</label>
+      <label class="form-label text-start">Office Start Time</label>
       <input type="time" class="form-control" v-model="start" />
     </div>
     <div class="col">
@@ -23,8 +25,8 @@
       <input type="number" class="form-control" v-model="infoArr.bufferTime" />
     </div>
   </div>
-  <br />
-  <h5>About Employee Leave</h5>
+  <hr />
+  <h3>Employee Leave</h3>
   <div class="row g-3">
     <div class="col">
       <label for="formAnnualLeave" class="form-label">Annual Leave</label>
@@ -97,7 +99,7 @@ export default {
       } else alert("Please try again");
     };
     return {
-      start, 
+      start,
       end,
       infoArr,
       saveUserInfo,

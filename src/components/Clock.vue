@@ -59,40 +59,62 @@ export default {
   text-align: center;
   position: relative;
   left: 10px;
-
   color: #121213;
   letter-spacing: 0.05em;
-  font-size: 45px;
+  // font-size: 45px;
 }
 .clock {
   font-family: "Share Tech Mono", monospace;
   text-align: center;
   position: relative;
   left: 10px;
-
   color: #121213;
   letter-spacing: 0.05em;
-  font-size: 70px;
+  // font-size: 70px;
 }
 .date-clock {
   /* Small devices (landscape phones, 576px and up) */
   @media (min-width: 576px) {
-    width: 210px;
+    .clock {
+      font-size: 50px;
+    }
+    .date {
+      font-size: 30px;
+    }
+    width: 260px;
   }
 
   /* Medium devices (tablets, 768px and up) */
   @media (min-width: 768px) {
+    .clock {
+      font-size: 60px;
+    }
+    .date {
+      font-size: 35px;
+    }
     width: 260px;
   }
 
   /* Large devices (desktops, 992px and up) */
   @media (min-width: 992px) {
+    .clock {
+      font-size: 65px;
+    }
+    .date {
+      font-size: 40px;
+    }
     width: 320px;
   }
 
   /* Extra large devices (large desktops, 1200px and up) */
   @media (min-width: 1200px) {
     width: 380px;
+    .clock {
+      font-size: 70px;
+    }
+    .date {
+      font-size: 45px;
+    }
   }
 }
 </style>

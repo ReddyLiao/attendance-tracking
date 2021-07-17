@@ -9,12 +9,13 @@
         pt-2
         text-white
         min-vh-100
+        text-start
       "
     >
+      <div class="p-3"></div>
       <span class="fs-5 d-none d-sm-inline"
         >Hi ! {{ userInfoArr.username }}</span
       >
-
       <ul
         class="
           nav nav-pills
@@ -22,28 +23,23 @@
           mb-sm-auto mb-0
           align-items-center align-items-sm-start
         "
-        id="info"
       >
         <li class="nav-item">
-          <span class="ms-1 d-none d-sm-inline"></span>
-        </li>
-        <li>
-          <span class="ms-1 d-none d-sm-inline">Office Start Time</span><br />
-          <span class="ms-1 d-none d-sm-inline">{{
-            userInfoArr.startTime
-          }}</span>
           <div class="p-3"></div>
         </li>
-        <li>
-          <span class="ms-1 d-none d-sm-inline">Office End Time</span><br />
-          <span class="ms-1 d-none d-sm-inline">{{ userInfoArr.endTime }}</span>
+        <li class="ms-1 d-none d-sm-inline">
+          <span>Office Start Time :</span><br />
+          <span>{{ userInfoArr.startTime }}</span>
           <div class="p-3"></div>
         </li>
-        <li>
-          <span class="ms-1 d-none d-sm-inline">Buffer time</span><br />
-          <span class="ms-1 d-none d-sm-inline"
-            >{{ userInfoArr.bufferTime }} minutes</span
-          >
+        <li class="ms-1 d-none d-sm-inline">
+          <span>Office End Time :</span><br />
+          <span>{{ userInfoArr.endTime }}</span>
+          <div class="p-3"></div>
+        </li>
+        <li class="ms-1 d-none d-sm-inline">
+          <span>Buffer time :</span><br />
+          <span>{{ userInfoArr.bufferTime }} minutes</span>
           <div class="p-3"></div>
         </li>
         <li>
@@ -60,13 +56,25 @@
             data-bs-parent="#menu"
           >
             <li class="w-100">
-              <a href="#" to="setting" class="nav-link px-0">
-                <span class="d-none d-sm-inline">Company Setup</span></a
+              <router-link
+                href="#"
+                to="/setting/companySetup"
+                class="nav-link px-0"
+              >
+                <span class="d-none d-sm-inline"
+                  >Company Setup</span
+                ></router-link
               >
             </li>
             <li>
-              <a href="#" class="nav-link px-0">
-                <span class="d-none d-sm-inline">Change Password</span></a
+              <router-link
+                href="#"
+                to="/setting/changPassword"
+                class="nav-link px-0"
+              >
+                <span class="d-none d-sm-inline"
+                  >Change Password</span
+                ></router-link
               >
             </li>
           </ul>

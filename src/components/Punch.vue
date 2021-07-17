@@ -1,14 +1,15 @@
 <template>
-  <h1>Clock</h1>
-  <Clock />
-  <button
-    type="button"
-    class="btn btn-outline-warning"
-    @click.prevent="todayPunch"
-  >
-    Punch in
-  </button>
-
+  <!-- <h1>Punch</h1> -->
+  <div class="p-4"></div>
+  <div class="row g-3 text-start">
+    <Clock class="col-md-4 text-start" />
+    <div class="col-md-4 mx-auto">
+      <button type="button" class="btn" @click.prevent="todayPunch">
+        Punch
+      </button>
+    </div>
+  </div>
+  <div class="p-5"></div>
   <div class="tablesize">
     <div class="table-responsive">
       <table class="table mt-3">
@@ -79,4 +80,12 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+.btn {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 6px solid rgb(92, 113, 228);
+  font-size: 30px;
+}
+</style>
