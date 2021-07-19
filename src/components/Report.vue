@@ -42,7 +42,6 @@
           <th>Punch In Time</th>
           <th>Punch Out Time</th>
           <th>Working Time</th>
-          <th>Total Working Time</th>
         </tr>
       </thead>
       <tbody>
@@ -62,6 +61,15 @@
           </td>
         </tr>
       </tbody>
+
+      <thead>
+        <tr>
+          <th>Total Working Time</th>
+          <th>{{ sumWorkingTime.hh }}hours</th>
+          <th>{{ sumWorkingTime.mm }}minutes</th>
+          <th>{{ String(sumWorkingTime.ss).split(".")[0] }}seconds</th>
+        </tr>
+      </thead>
     </table>
     <Pagination
       @getData="getData(attendanceList, currentSort)"
@@ -85,6 +93,7 @@ export default {
     onMounted(() => {
       currentSort.value = "key.date,desc";
       getData(attendanceList, currentSort.value);
+      getWorkingTime();
     });
     const {
       currentSort,
@@ -100,12 +109,50 @@ export default {
     watch(() => getData(attendanceList, currentSort.value));
 
     const range = ref(new Date());
+    const sumWorkingTime = ref({});
     const getReportList = async () => {
       dateRang.timestamp1 = computed(() => Date.parse(range.value.start));
       dateRang.timestamp2 = computed(() => Date.parse(range.value.end));
       console.log(range.value.start);
-
       await getData(attendanceList, currentSort.value);
+    };
+    //total working time
+    const timeArr = ref({});
+    const getWorkingTime = async () => {
+      const sort = {
+        size: 1000,
+        sort: "key.date,desc",
+      };
+      const res = await attendanceList(sort);
+      timeArr.value = res.data.body.content;
+      console.log(res.data.body.content);
+      timeArr.value = res.data.body.content.map((el) =>
+        (el.duration || "")
+          .replace("PT", "")
+          .replace("H", ":")
+          .replace("M", ":")
+          .replace("S", "")
+      );
+      let hh = 0;
+      let mm = 0;
+      let ss = 0;
+      // console.log(timeArr.value.filter((s) => s.length > 0));
+      for (const durationStr of timeArr.value.filter((s) => s.length > 0)) {
+        let temp = durationStr.split(":");
+        if (temp.length == 3) {
+          hh = hh + new Number(temp[0]);
+          mm = mm + new Number(temp[1]);
+          ss = ss + new Number(temp[2]);
+        } else {
+          ss = ss + new Number(temp[0]);
+        }
+      }
+      sumWorkingTime.value = {
+        hh: hh + parseInt(mm / 60),
+        mm: (mm + parseInt(ss / 60)) % 60,
+        ss: ss % 60,
+      };
+      console.log(sumWorkingTime.value);
     };
     return {
       range,
@@ -120,6 +167,7 @@ export default {
       data,
       getData,
       attendanceList,
+      sumWorkingTime,
     };
   },
 };
