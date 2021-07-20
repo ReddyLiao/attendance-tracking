@@ -19,8 +19,6 @@ export function useSearch() {
     getPage.sort = sortType;
     getPage.timestamp1 = dateRang.timestamp1;
     getPage.timestamp2 = dateRang.timestamp2;
-    console.log(getPage);
-
     const res = await api(getPage);
     data.value = res.data.body.content;
     totalPages.value = res.data.body.totalPages;

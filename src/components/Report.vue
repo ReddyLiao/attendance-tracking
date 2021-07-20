@@ -93,7 +93,6 @@ export default {
     onMounted(() => {
       currentSort.value = "key.date,desc";
       getData(attendanceList, currentSort.value);
-      getWorkingTime();
     });
     const {
       currentSort,
@@ -115,18 +114,10 @@ export default {
       dateRang.timestamp2 = computed(() => Date.parse(range.value.end));
       console.log(range.value.start);
       await getData(attendanceList, currentSort.value);
-    };
-    //total working time
-    const timeArr = ref({});
-    const getWorkingTime = async () => {
-      const sort = {
-        size: 1000,
-        sort: "key.date,desc",
-      };
-      const res = await attendanceList(sort);
-      timeArr.value = res.data.body.content;
-      console.log(res.data.body.content);
-      timeArr.value = res.data.body.content.map((el) =>
+      //total working time
+      const timeArr = ref({});
+      timeArr.value = data.value;
+      timeArr.value = data.value.map((el) =>
         (el.duration || "")
           .replace("PT", "")
           .replace("H", ":")
@@ -152,7 +143,6 @@ export default {
         mm: (mm + parseInt(ss / 60)) % 60,
         ss: ss % 60,
       };
-      console.log(sumWorkingTime.value);
     };
     return {
       range,
