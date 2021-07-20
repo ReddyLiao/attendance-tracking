@@ -27,6 +27,23 @@ const routes = [
             path: "report",
             name: "Report",
             component: () => import("../components/Report.vue"),
+            children: [
+              // {
+              //   path: "/report/daily",
+              //   name: "Daily",
+              //   component: () => import("../components/Daily.vue"),
+              // },
+              // {
+              //   path: "/report/weekly",
+              //   name: "Weekly",
+              //   component: () => import("../components/Weekly.vue"),
+              // },
+              // {
+              //   path: "/report/monthly",
+              //   name: "Monthly",
+              //   component: () => import("../components/Monthly.vue"),
+              // },
+            ],
           },
           {
             path: "dailyRecord",

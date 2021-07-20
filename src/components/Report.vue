@@ -61,7 +61,6 @@
           </td>
         </tr>
       </tbody>
-
       <thead>
         <tr>
           <th>Total Working Time</th>
@@ -85,7 +84,6 @@ import { attendanceList } from "@/api/index.js";
 import DatePickRange from "@/components/DatePickRange.vue";
 import Pagination from "@/components/Pagination.vue";
 import { useSearch } from "@/composition/search.js";
-
 export default {
   components: { Pagination, DatePickRange },
 
@@ -93,6 +91,7 @@ export default {
     onMounted(() => {
       currentSort.value = "key.date,desc";
       getData(attendanceList, currentSort.value);
+      getSumWorkingTime();
     });
     const {
       currentSort,
@@ -104,20 +103,31 @@ export default {
       timestamp1,
       timestamp2,
       changePage,
+      sumWorkingTime,
     } = useSearch();
     watch(() => getData(attendanceList, currentSort.value));
 
     const range = ref(new Date());
-    const sumWorkingTime = ref({});
     const getReportList = async () => {
       dateRang.timestamp1 = computed(() => Date.parse(range.value.start));
       dateRang.timestamp2 = computed(() => Date.parse(range.value.end));
-      console.log(range.value.start);
       await getData(attendanceList, currentSort.value);
-      //total working time
-      const timeArr = ref({});
-      timeArr.value = data.value;
-      timeArr.value = data.value.map((el) =>
+      getSumWorkingTime();
+      console.log(workingTimeSort);
+    };
+    //total working time
+    // const sumWorkingTime = ref({});
+    const workingTimeSort = reactive({
+      size: 1000,
+      timestamp1: "",
+      timestamp: "",
+    });
+    const durationArr = ref({});
+    const getSumWorkingTime = async () => {
+      workingTimeSort.timestamp1 = dateRang.timestamp1;
+      workingTimeSort.timestamp2 = dateRang.timestamp2;
+      const res = await attendanceList(workingTimeSort);
+      durationArr.value = res.data.body.content.map((el) =>
         (el.duration || "")
           .replace("PT", "")
           .replace("H", ":")
@@ -127,8 +137,8 @@ export default {
       let hh = 0;
       let mm = 0;
       let ss = 0;
-      // console.log(timeArr.value.filter((s) => s.length > 0));
-      for (const durationStr of timeArr.value.filter((s) => s.length > 0)) {
+      // console.log(durationArr.value.filter((s) => s.length > 0));
+      for (const durationStr of durationArr.value.filter((s) => s.length > 0)) {
         let temp = durationStr.split(":");
         if (temp.length == 3) {
           hh = hh + new Number(temp[0]);
@@ -144,7 +154,10 @@ export default {
         ss: ss % 60,
       };
     };
+
     return {
+      getSumWorkingTime,
+      sumWorkingTime,
       range,
       dateRang,
       getReportList,
@@ -156,8 +169,6 @@ export default {
       currentSort,
       data,
       getData,
-      attendanceList,
-      sumWorkingTime,
     };
   },
 };

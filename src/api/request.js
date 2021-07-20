@@ -33,8 +33,8 @@ service.interceptors.response.use(
     return response;
   },
   (error) => {
-    alert("token失效，重新登入");
-    router.push("/signinRegister");
+    // alert("token失效，重新登入");
+    // router.push("/signinRegister");
     console.log("error：" + error); // 用於調試
     return Promise.reject(error);
   }
