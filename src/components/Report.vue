@@ -66,7 +66,7 @@
           <th>Total Working Time</th>
           <th>{{ sumWorkingTime.hh }}hours</th>
           <th>{{ sumWorkingTime.mm }}minutes</th>
-          <th>{{ String(sumWorkingTime.ss).split(".")[0] }}seconds</th>
+          <th>{{ parseInt(sumWorkingTime.ss) }}seconds</th>
         </tr>
       </thead>
     </table>
@@ -154,7 +154,6 @@ export default {
         ss: ss % 60,
       };
     };
-
     return {
       getSumWorkingTime,
       sumWorkingTime,
