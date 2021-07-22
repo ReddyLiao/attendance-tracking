@@ -27,13 +27,22 @@
         </ul>
         <!-- Left links -->
         <div class="d-flex align-items-center">
-          <button type="button" class="btn btn-success">Daily</button>
+          <router-link class="nav-link" to="/record/report">
+            <button type="button" class="btn btn-success">
+              Daily
+            </button></router-link
+          >
           <button type="button" class="btn btn-success">Weekly</button>
-          <button type="button" class="btn btn-success">Monthly</button>
+          <router-link class="nav-link" to="/report/reportmonthly"
+            ><button type="button" class="btn btn-success">
+              Monthly
+            </button></router-link
+          >
         </div>
       </div>
     </div>
   </nav>
+  <router-view />
   <div class="table-responsive">
     <table class="table mt-3">
       <thead>
@@ -47,7 +56,6 @@
       <tbody>
         <tr v-for="item in data" :key="item">
           <td>{{ item.key.date }}</td>
-
           <td>{{ item.startTime }}</td>
           <td>{{ item.endTime }}</td>
           <td>
@@ -77,6 +85,7 @@
       @changePage="changePage"
     />
   </div>
+  <!-- <router-view /> -->
 </template>
 <script>
 import { onMounted, watch, ref, reactive, computed } from "vue";
@@ -109,6 +118,7 @@ export default {
 
     const range = ref(new Date());
     const getReportList = async () => {
+      console.log(range.value.start);
       dateRang.timestamp1 = computed(() => Date.parse(range.value.start));
       dateRang.timestamp2 = computed(() => Date.parse(range.value.end));
       await getData(attendanceList, currentSort.value);
@@ -116,11 +126,11 @@ export default {
       console.log(workingTimeSort);
     };
     //total working time
-    // const sumWorkingTime = ref({});
     const workingTimeSort = reactive({
       size: 1000,
       timestamp1: "",
       timestamp: "",
+      type: "work",
     });
     const durationArr = ref({});
     const getSumWorkingTime = async () => {
@@ -137,13 +147,15 @@ export default {
       let hh = 0;
       let mm = 0;
       let ss = 0;
-      // console.log(durationArr.value.filter((s) => s.length > 0));
       for (const durationStr of durationArr.value.filter((s) => s.length > 0)) {
         let temp = durationStr.split(":");
         if (temp.length == 3) {
           hh = hh + new Number(temp[0]);
           mm = mm + new Number(temp[1]);
           ss = ss + new Number(temp[2]);
+        } else if (temp.length == 2) {
+          mm = mm + new Number(temp[0]);
+          ss = ss + new Number(temp[1]);
         } else {
           ss = ss + new Number(temp[0]);
         }
