@@ -62,7 +62,10 @@ export default {
               color: punch.status === "work" ? "indigo" : "red",
             },
             popover: {
-              label: punch.description,
+              label:
+                punch.status === "work"
+                  ? punch.description
+                  : `Leave by ${punch.status}`,
               visibility: "click",
               hideIndicator: true,
               // isInteractive: true, 編輯或運算

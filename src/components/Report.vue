@@ -32,8 +32,12 @@
               Daily
             </button></router-link
           >
-          <button type="button" class="btn btn-success">Weekly</button>
-          <router-link class="nav-link" to="/report/reportmonthly"
+          <router-link class="nav-link" to="/report/reportWeekly">
+            <button type="button" class="btn btn-success">
+              Weekly
+            </button></router-link
+          >
+          <router-link class="nav-link" to="/report/reportMonthly"
             ><button type="button" class="btn btn-success">
               Monthly
             </button></router-link

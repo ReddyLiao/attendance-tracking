@@ -28,13 +28,13 @@ const routes = [
             name: "Report",
             component: () => import("../components/Report.vue"),
           },
-          // {
-          //   path: "/report/weekly",
-          //   name: "Weekly",
-          //   component: () => import("../components/Weekly.vue"),
-          // },
           {
-            path: "/report/reportmonthly",
+            path: "/report/reportWeekly",
+            name: "ReportWeekly",
+            component: () => import("../components/ReportWeekly.vue"),
+          },
+          {
+            path: "/report/reportMonthly",
             name: "ReportMonthly",
             component: () => import("../components/ReportMonthly.vue"),
           },

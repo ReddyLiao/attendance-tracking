@@ -35,11 +35,7 @@
               Daily
             </button></router-link
           >
-          <router-link class="nav-link" to="/report/reportWeekly">
-            <button type="button" class="btn btn-success">
-              Weekly
-            </button></router-link
-          >
+          <button type="button" class="btn btn-success">Weekly</button>
           <router-link class="nav-link" to="/report/reportmonthly"
             ><button type="button" class="btn btn-success">
               Monthly
@@ -84,6 +80,7 @@
 import { onMounted, ref, reactive, computed } from "vue";
 import { attendanceList } from "@/api/index.js";
 import DatePickRange from "@/components/DatePickRange.vue";
+
 export default {
   components: { DatePickRange },
 
@@ -96,25 +93,48 @@ export default {
       size: 1000,
       type: "work",
     });
-    const durationArr = ref({});
+    const durationArr = ref([]);
+    const weeklyArr = ref([]);
     const tempMap = reactive(new Map());
     const getSumWorkingTime = async () => {
       const res = await attendanceList(workingTimeSort);
       durationArr.value = res.data.body.content;
+      weeklyArr.value = res.data.body.content.map((a) => {
+        let date1 = new Date(a.key.date);
+        let date2 = new Date(date1.getFullYear(), 0, 1);
+        let day1 = date1.getDay();
+        if (day1 == 0) day1 = 7;
+        let day2 = date2.getDay();
+        if (day2 == 0) day2 = 7;
+        let d = Math.round(
+          (date1.getTime() -
+            date2.getTime() +
+            (day2 - day1) * (24 * 60 * 60 * 1000)) /
+            86400000
+        );
+        let weekOfYear = Math.ceil(d / 7) + 1;
+        let temp = {
+          week: weekOfYear,
+          date: a.key.date,
+          duration: a.duration,
+        };
+        return temp;
+      });
+      console.log(weeklyArr.value);
       workingTimeSort.timestamp1 = computed(() =>
         Date.parse(range.value.start)
       );
       workingTimeSort.timestamp2 = computed(() => Date.parse(range.value.end));
       tempMap.clear();
-      console.log(durationArr.value);
-      for (const tempElment of durationArr.value) {
-        let key = tempElment.key.date.substr(0, 7);
+      for (const tempElment of weeklyArr.value) {
+        let key = tempElment.week;
         let duration = (tempElment.duration || "")
           .replace("PT", "")
           .replace("H", ":")
           .replace("M", ":")
           .replace("S", "")
           .split(":");
+        // console.log(key, duration);
         if (duration.length == 3) {
           duration =
             (new Number(duration[0]) * 60 + new Number(duration[1])) * 60 +
@@ -131,11 +151,12 @@ export default {
           tempMap.set(key, preValue + duration);
         }
       }
-      console.log(durationArr.value);
-      console.log(tempMap);
+      // console.log(durationArr.value);
+      // console.log(tempMap);
     };
 
     return {
+      durationArr,
       tempMap,
       getSumWorkingTime,
       range,
