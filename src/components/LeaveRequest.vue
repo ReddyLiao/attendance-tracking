@@ -10,15 +10,12 @@
         <option class="dropdown-item" value="Casual">Casual Leave</option>
         <option class="dropdown-item" value="Others">Others</option>
       </select>
-      <span>{{ selected }}</span>
       <input
         type="text"
         class="form-control"
         placeholder="Reason / Other leave type"
         v-model="reqArr.note"
       />
-      <span>{{ reason }}</span>
-      <!-- required -->
     </div>
     <div class="col-md-4">
       <label for="validationStartTime" class="form-label">Leave Time</label>
@@ -45,7 +42,7 @@
 </template>
 <script>
 import { dayOff } from "@/api/index.js";
-import { reactive, ref, computed, watch } from "vue";
+import { reactive, ref, computed } from "vue";
 import DatePick from "@/components/DatePick.vue";
 
 export default {

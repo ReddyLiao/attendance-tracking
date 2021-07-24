@@ -56,7 +56,18 @@
       </thead>
       <tbody>
         <tr v-for="item in tempMap" :key="item">
-          <td>{{ item[0] }}</td>
+          <td>
+            {{
+              new Date(
+                new Date(new Date().getFullYear(), 0, 1).getTime() +
+                  (item[0] - 1) * 7 * 86400000 -
+                  (new Date(new Date().getFullYear(), 0, 1).getDay() - 7) *
+                    (24 * 60 * 60 * 1000)
+              )
+                .toLocaleDateString()
+                .replaceAll("/", "-")
+            }}
+          </td>
           <td>
             {{
               `${Math.floor(item[1] / 3600)}hr ${Math.floor(
@@ -115,6 +126,7 @@ export default {
         let weekOfYear = Math.ceil(d / 7) + 1;
         let temp = {
           week: weekOfYear,
+          weekNumber: new Date(a.key.date).getDay(),
           date: a.key.date,
           duration: a.duration,
         };
@@ -151,8 +163,16 @@ export default {
           tempMap.set(key, preValue + duration);
         }
       }
-      // console.log(durationArr.value);
-      // console.log(tempMap);
+      console.log(durationArr.value);
+      console.log(tempMap);
+      console.log(
+        new Date(
+          new Date(new Date().getFullYear(), 0, 1).getTime() +
+            (23 - 1) * 7 * 86400000 -
+            (new Date(new Date().getFullYear(), 0, 1).getDay() - 7) *
+              (24 * 60 * 60 * 1000)
+        ).toLocaleDateString()
+      );
     };
 
     return {
