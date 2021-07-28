@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import router from "@/router";
 import { onMounted, reactive, ref, computed } from "vue";
 import { userInfo, updatePassword } from "@/api/index.js";
 
@@ -75,7 +76,7 @@ export default {
       console.log(res);
       if (status === "ok") {
         alert("Change password success !");
-        userSignIn();
+        router.push("/signinRegister");
       } else {
         alert(res.data.msg);
       }

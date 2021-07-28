@@ -6,7 +6,6 @@
       <input
         type="text"
         class="form-control"
-        v-model="companyName"
         placeholder="Your Company Name "
       />
     </div>
@@ -58,7 +57,11 @@
     <div class="col">
       <label for="formEmployeeLeave" class="form-label"
         >Total Employee Leave</label
-      ><input type="number" class="form-control" placeholder="0" />
+      ><br /><span class="form-control">{{
+        new Number(infoArr.originAnnualLeave) +
+        new Number(infoArr.originCcasualLeave) +
+        new Number(infoArr.originSickLeave)
+      }}</span>
     </div>
   </div>
   <br />

@@ -18,7 +18,7 @@
       />
     </div>
     <div class="col-md-4">
-      <label for="validationStartTime" class="form-label">Leave Time</label>
+      <label for="validationStartTime" class="form-label"></label>
       <span class="input-group-text"> Start Time</span>
       <DatePick class="form-control" v-model="date1" />
     </div>

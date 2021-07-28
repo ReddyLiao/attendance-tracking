@@ -81,7 +81,6 @@ export default {
       console.log(res);
       if (status === "ok") {
         localStorage.setItem("transAdmin", res.data.body);
-        //語法storage.setItem(keyName, keyValue);
         router.push("/");
       } else {
         alert(res.data.msg);
