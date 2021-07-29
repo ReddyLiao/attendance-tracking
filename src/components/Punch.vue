@@ -4,8 +4,21 @@
   <div class="row g-3 text-start">
     <Clock class="col-md-4 text-start" />
     <div class="col-md-4 mx-auto">
-      <button type="button" class="btn" @click.prevent="todayPunch">
-        Punch
+      <button
+        v-if="punchTimeArr.startTime != null"
+        type="button"
+        class="btn"
+        @click.prevent="todayPunch"
+      >
+        Punch Out
+      </button>
+      <button
+        v-if="punchTimeArr.startTime == null"
+        type="button"
+        class="btn"
+        @click.prevent="todayPunch"
+      >
+        Punch In
       </button>
     </div>
   </div>

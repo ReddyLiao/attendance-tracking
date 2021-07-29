@@ -20,7 +20,7 @@ export default {
     const attendanceArr = ref([]);
     const dailyPunchs = ref([]);
     const sort = {
-      size: 30,
+      size: 100,
       sort: "key.date,desc",
     };
     const getAttendanceList = async () => {

@@ -1,6 +1,6 @@
 <template>
   <h4>Company Setting</h4>
-  <div class="mb-3">
+  <form class="row g-3">
     <div class="col-md-4 mx-auto text-start">
       <label for="formGroupExampleInput" class="form-label">Company Name</label>
       <input
@@ -9,24 +9,27 @@
         placeholder="Your Company Name "
       />
     </div>
-  </div>
-  <div class="row g-3 text-start">
-    <div class="col">
-      <label class="form-label text-start">Office Start Time</label>
-      <input type="time" class="form-control" v-model="start" />
+    <div class="row g-3 text-start">
+      <div class="col">
+        <label class="form-label text-start">Office Start Time</label>
+        <input type="time" class="form-control" v-model="start" required />
+      </div>
+      <div class="col">
+        <label class="form-label">Office End Time</label>
+        <input type="time" class="form-control" v-model="end" required />
+      </div>
+      <div class="col">
+        <label class="form-label">Buffer Time(minute)</label>
+        <input
+          type="number"
+          class="form-control"
+          v-model="infoArr.bufferTime"
+        />
+      </div>
     </div>
-    <div class="col">
-      <label class="form-label">Office End Time</label>
-      <input type="time" class="form-control" v-model="end" />
-    </div>
-    <div class="col">
-      <label class="form-label">Buffer Time(minute)</label>
-      <input type="number" class="form-control" v-model="infoArr.bufferTime" />
-    </div>
-  </div>
-  <hr />
-  <h3>Employee Leave</h3>
-  <div class="row g-3">
+    <hr />
+    <h4>Employee Leave</h4>
+
     <div class="col">
       <label for="formAnnualLeave" class="form-label">Annual Leave</label>
       <input
@@ -42,7 +45,7 @@
         type="number"
         class="form-control"
         placeholder="0"
-        v-model="infoArr.originCcasualLeave"
+        v-model="infoArr.originCasualLeave"
       />
     </div>
     <div class="col">
@@ -59,20 +62,17 @@
         >Total Employee Leave</label
       ><br /><span class="form-control">{{
         new Number(infoArr.originAnnualLeave) +
-        new Number(infoArr.originCcasualLeave) +
+        new Number(infoArr.originCasualLeave) +
         new Number(infoArr.originSickLeave)
       }}</span>
     </div>
-  </div>
-  <br />
-  <div class="col-12">
-    <input
-      class="btn btn-primary"
-      type="submit"
-      @click="saveUserInfo"
-      value="Save"
-    />
-  </div>
+    <br />
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit" @click="saveUserInfo">
+        Save
+      </button>
+    </div>
+  </form>
 </template>
 
 <script>
