@@ -1,10 +1,8 @@
 # attendance-tracking
 
 
-#DEMO網址
 
-https://zxvscscbttb64.beefar4.com/#/signinRegister
-
+[DEMO](https://zxvscscbttb64.beefar4.com/#/signinRegister)
 
 ```
  #快數啟動
