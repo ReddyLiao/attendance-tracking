@@ -11,46 +11,70 @@
 </template>
 
 <script>
-const date = new Date();
+import { reactive, ref, onBeforeMount, onBeforeUnmount } from "vue";
 export default {
-  name: "App",
-  data() {
-    return {
-      dateTime: {
-        years: date.getFullYear(),
-        months: date.getMonth(),
-        dates: date.getDate(),
-        weeks: date.getDay(),
-        hours: date.getHours(),
-        minutes: date.getMinutes(),
-        seconds: date.getSeconds(),
-      },
-      week: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
-      timer: undefined,
-    };
-  },
-  methods: {
-    setDateTime() {
+  setup() {
+    const dateTime = reactive({});
+    const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+    let timer = ref();
+    const setDateTime = () => {
       const date = new Date();
+      dateTime.years = date.getFullYear();
+      dateTime.months = date.getMonth();
+      dateTime.dates = date.getDate();
+      dateTime.weeks = date.getDay();
+      dateTime.hours = date.getHours();
+      dateTime.minutes = date.getMinutes();
+      dateTime.seconds = date.getSeconds();
+    };
+    onBeforeMount(() => {
+      timer.value = setInterval(setDateTime, 1000);
+    });
+    onBeforeUnmount(() => {
+      clearInterval(timer.value);
+    });
+    return { dateTime, week, timer };
+  },
+  // data() {
+  //   const date = new Date();
 
-      this.dateTime = {
-        years: date.getFullYear(),
-        months: date.getMonth(),
-        dates: date.getDate(),
-        weeks: date.getDay(),
-        hours: date.getHours(),
-        minutes: date.getMinutes(),
-        seconds: date.getSeconds(),
-      };
-    },
-  },
+  //   return {
+  //     dateTime: {
+  //       years: date.getFullYear(),
+  //       months: date.getMonth(),
+  //       dates: date.getDate(),
+  //       weeks: date.getDay(),
+  //       hours: date.getHours(),
+  //       minutes: date.getMinutes(),
+  //       seconds: date.getSeconds(),
+  //     },
+  //     week: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+  //     timer: undefined,
+  //   };
+  // },
+  // methods: {
+  //   setDateTime() {
+  //     const date = new Date();
 
-  beforeMount() {
-    this.timer = setInterval(this.setDateTime, 1000);
-  },
-  beforeUnmount() {
-    clearInterval(this.timer);
-  },
+  //     this.dateTime = {
+  //       years: date.getFullYear(),
+  //       months: date.getMonth(),
+  //       dates: date.getDate(),
+  //       weeks: date.getDay(),
+  //       hours: date.getHours(),
+  //       minutes: date.getMinutes(),
+  //       seconds: date.getSeconds(),
+  //     };
+  //   },
+  // },
+
+  // beforeMount() {
+  //   this.timer = setInterval(this.setDateTime, 1000);
+  //   console.log(this.timer);
+  // },
+  // beforeUnmount() {
+  //   clearInterval(this.timer);
+  // },
 };
 </script>
 <style lang="scss">

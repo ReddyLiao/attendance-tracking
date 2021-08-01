@@ -1,7 +1,7 @@
 import axios from "axios";
 import router from "@/router";
 const service = axios.create({
-  baseURL: "http://localhost:8080", // api的base_url
+  baseURL: "https://adqwdxacxqfqe.beefar4.com", // api的base_url
 });
 
 // 請求攔截器
