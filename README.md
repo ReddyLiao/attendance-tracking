@@ -6,7 +6,7 @@
 https://zxvscscbttb64.beefar4.com/#/signinRegister
 
 
-#建置
+#快數啟動
 
 1. npm install 
 2. npm run dev 
@@ -45,7 +45,7 @@ https://zxvscscbttb64.beefar4.com/#/signinRegister
 6. 多工作紀錄：於打卡時可選是要記錄哪份工作的卡；報表可篩選
 7. 小日記短語
 
-**目標人群：苦命小員工**
+**目標用戶：勞方(受雇者)**
 
 **功能架構**
 
