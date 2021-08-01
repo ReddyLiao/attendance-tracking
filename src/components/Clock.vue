@@ -1,11 +1,13 @@
 <template>
-  <div class="date-clock">
-    <div class="date">
-      {{ dateTime.years }}/{{ dateTime.months + 1 }}/{{ dateTime.dates }}
-      {{ week[dateTime.weeks] }}
-    </div>
-    <div class="clock">
-      {{ dateTime.hours }}:{{ dateTime.minutes }}:{{ dateTime.seconds }}
+  <div>
+    <div class="date-clock">
+      <div class="date">
+        {{ dateTime.years }}/{{ dateTime.months + 1 }}/{{ dateTime.dates }}
+        {{ week[dateTime.weeks] }}
+      </div>
+      <div class="clock">
+        {{ dateTime.hours }}:{{ dateTime.minutes }}:{{ dateTime.seconds }}
+      </div>
     </div>
   </div>
 </template>
@@ -14,7 +16,15 @@
 import { reactive, ref, onBeforeMount, onBeforeUnmount } from "vue";
 export default {
   setup() {
-    const dateTime = reactive({});
+    const dateTime = reactive({
+      years: new Date().getFullYear(),
+      months: new Date().getMonth(),
+      dates: new Date().getDate(),
+      weeks: new Date().getDay(),
+      hours: new Date().getHours(),
+      minutes: new Date().getMinutes(),
+      seconds: new Date().getSeconds(),
+    });
     const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
     let timer = ref();
     const setDateTime = () => {
@@ -35,46 +45,6 @@ export default {
     });
     return { dateTime, week, timer };
   },
-  // data() {
-  //   const date = new Date();
-
-  //   return {
-  //     dateTime: {
-  //       years: date.getFullYear(),
-  //       months: date.getMonth(),
-  //       dates: date.getDate(),
-  //       weeks: date.getDay(),
-  //       hours: date.getHours(),
-  //       minutes: date.getMinutes(),
-  //       seconds: date.getSeconds(),
-  //     },
-  //     week: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
-  //     timer: undefined,
-  //   };
-  // },
-  // methods: {
-  //   setDateTime() {
-  //     const date = new Date();
-
-  //     this.dateTime = {
-  //       years: date.getFullYear(),
-  //       months: date.getMonth(),
-  //       dates: date.getDate(),
-  //       weeks: date.getDay(),
-  //       hours: date.getHours(),
-  //       minutes: date.getMinutes(),
-  //       seconds: date.getSeconds(),
-  //     };
-  //   },
-  // },
-
-  // beforeMount() {
-  //   this.timer = setInterval(this.setDateTime, 1000);
-  //   console.log(this.timer);
-  // },
-  // beforeUnmount() {
-  //   clearInterval(this.timer);
-  // },
 };
 </script>
 <style lang="scss">
@@ -82,25 +52,21 @@ export default {
   font-family: "Share Tech Mono", monospace;
   text-align: center;
   position: relative;
-  left: 10px;
-  color: #121213;
+  color: #0d2055;
   letter-spacing: 0.05em;
-  // font-size: 45px;
 }
 .clock {
   font-family: "Share Tech Mono", monospace;
   text-align: center;
   position: relative;
-  left: 10px;
-  color: #121213;
+  color: #0d2055;
   letter-spacing: 0.05em;
-  // font-size: 70px;
 }
 .date-clock {
   /* Small devices (landscape phones, 576px and up) */
   @media (min-width: 576px) {
     .clock {
-      font-size: 50px;
+      font-size: 45px;
     }
     .date {
       font-size: 30px;
@@ -111,7 +77,7 @@ export default {
   /* Medium devices (tablets, 768px and up) */
   @media (min-width: 768px) {
     .clock {
-      font-size: 60px;
+      font-size: 50px;
     }
     .date {
       font-size: 35px;
@@ -122,7 +88,7 @@ export default {
   /* Large devices (desktops, 992px and up) */
   @media (min-width: 992px) {
     .clock {
-      font-size: 65px;
+      font-size: 60px;
     }
     .date {
       font-size: 40px;

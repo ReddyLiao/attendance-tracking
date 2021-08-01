@@ -1,9 +1,8 @@
 <template>
-  <!-- <h1>Punch</h1> -->
   <div class="p-4"></div>
   <div class="row g-3 text-start">
-    <Clock class="col-md-4 text-start" />
-    <div class="col-md-4 mx-auto">
+    <Clock class="col-md-4 mx-auto" />
+    <div class="col-md-6 mx-auto text-center">
       <button
         v-if="punchTimeArr.startTime != null"
         type="button"
@@ -23,30 +22,28 @@
     </div>
   </div>
   <div class="p-5"></div>
-  <div class="tablesize">
-    <div class="table-responsive">
-      <table class="table mt-3">
-        <thead>
-          <tr>
-            <th>Punch In</th>
-            <th>Punch Out</th>
-            <th>Working Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{ (punchTimeArr.startTime || "").split(".")[0] }}</td>
-            <td>{{ (punchTimeArr.endTime || "").split(".")[0] }}</td>
-            <td>
-              {{
-                (punchTimeArr.duration || "").replace("PT", "").split(".")[0] +
-                "S"
-              }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="table-responsive">
+    <table class="table mt-3">
+      <thead>
+        <tr>
+          <th>Punch In</th>
+          <th>Punch Out</th>
+          <th>Working Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ (punchTimeArr.startTime || "").split(".")[0] }}</td>
+          <td>{{ (punchTimeArr.endTime || "").split(".")[0] }}</td>
+          <td>
+            {{
+              (punchTimeArr.duration || "").replace("PT", "").split(".")[0] +
+              "S"
+            }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
