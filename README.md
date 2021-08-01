@@ -1,7 +1,7 @@
 # attendance-tracking
 
 
-#參訪網址
+#DEMO網址
 
 https://zxvscscbttb64.beefar4.com/#/signinRegister
 
@@ -16,6 +16,10 @@ https://zxvscscbttb64.beefar4.com/#/signinRegister
 **目的**
 
 提供一個員工可以自行記錄出缺勤及查閱的系統，若公司無出勤系統提供員工做出勤紀錄的查詢，員工無法得知自己的出勤狀況、上班時數、加班時數、應有的請假天數等資訊；或對已有公司出勤系統，員工可透過此系統資料與公司資料作核對，能更便捷快速得知出缺勤資料。
+
+**專案架構**
+這是一個前後端分離(restful api)的專案,
+使用vue3 搭配vite做快速打包建製的專案.
 
 **功能需求**
 
