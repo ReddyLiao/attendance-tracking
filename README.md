@@ -8,9 +8,10 @@ https://zxvscscbttb64.beefar4.com/#/signinRegister
 
 #快數啟動
 
-1. npm install 
-2. npm run dev 
-
+```
+ npm install  
+ npm run dev 
+```
 #介紹
 
 **目的**
