@@ -25,7 +25,6 @@
             </button>
           </li>
         </ul>
-        <!-- Left links -->
         <div class="d-flex align-items-center">
           <router-link class="nav-link" to="/record/report">
             <button type="button" class="btn btn-success">
@@ -89,7 +88,6 @@
       @changePage="changePage"
     />
   </div>
-  <!-- <router-view /> -->
 </template>
 <script>
 import { onMounted, watch, ref, reactive, computed } from "vue";

@@ -71,7 +71,6 @@ export default {
     .date {
       font-size: 30px;
     }
-    width: 260px;
   }
 
   /* Medium devices (tablets, 768px and up) */
@@ -82,7 +81,6 @@ export default {
     .date {
       font-size: 35px;
     }
-    width: 260px;
   }
 
   /* Large devices (desktops, 992px and up) */
@@ -93,12 +91,10 @@ export default {
     .date {
       font-size: 40px;
     }
-    width: 320px;
   }
 
   /* Extra large devices (large desktops, 1200px and up) */
   @media (min-width: 1200px) {
-    width: 380px;
     .clock {
       font-size: 70px;
     }
