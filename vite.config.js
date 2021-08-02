@@ -11,6 +11,6 @@ export default defineConfig({
       },
     ],
   },
-  base: "./attendance-tracking/",
+  base: "/attendance-tracking/",
   plugins: [vue()],
 });
