@@ -2,7 +2,7 @@
 
 
 
-[DEMO](https://zxvscscbttb64.beefar4.com/#/signinRegister)
+[DEMO](https://ruiuiuiuiui.github.io/attendance-tracking/#/signinRegister)
 
 ```
  #快速啟動
