@@ -5,7 +5,7 @@
 [DEMO](https://zxvscscbttb64.beefar4.com/#/signinRegister)
 
 ```
- #快數啟動
+ #快速啟動
  npm install  
  npm run dev 
 ```
