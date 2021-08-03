@@ -1,10 +1,13 @@
 <template>
-  <nav id="sidebar">
+  <nav id="sidebar" v-show="collapse === false">
+    <div class="col py-2"></div>
     <div class="sidebar-header">
-      <h3>Hi ! {{ userInfoArr.username }}</h3>
+      <h2>Attendance Tracking</h2>
     </div>
-
-    <ul class="list-unstyled">
+    <ul class="list-unstyled text-start">
+      <li class="sidebar-brand">
+        <h4>Hi ! {{ userInfoArr.username }}</h4>
+      </li>
       <p>
         <span>Office Start Time :</span><br />
         <span>{{ userInfoArr.startTime }}</span>
@@ -26,16 +29,14 @@
           >Settings</a
         >
         <div class="collapse" id="submenu">
-          <ul class="btn-toggle-nav list-unstyled fw-normal">
+          <ul class="btn-toggle-nav list-unstyled">
             <li>
               <router-link
                 href="#"
                 to="/setting/companySetup"
                 class="nav-link px-0"
               >
-                <span class="d-none d-sm-inline"
-                  >Company Setup</span
-                ></router-link
+                <span>Company Setup</span></router-link
               >
             </li>
             <li>
@@ -44,9 +45,7 @@
                 to="/setting/changPassword"
                 class="nav-link px-0"
               >
-                <span class="d-none d-sm-inline"
-                  >Change Password</span
-                ></router-link
+                <span>Change Password</span></router-link
               >
             </li>
           </ul>
@@ -54,21 +53,28 @@
       </li>
     </ul>
   </nav>
+  <div class="col-1 py-4">
+    <button class="btn btn-primary" @click="collapse = !collapse">
+      <span>&#9776;</span>
+    </button>
+  </div>
   <div class="col py-3">
     <router-view />
   </div>
 </template>
 <script>
-import { onMounted, computed } from "vue";
+import { onMounted, computed, ref } from "vue";
 import { useStore } from "vuex";
 export default {
   name: "sidebar",
   setup() {
+    const collapse = ref(false);
     onMounted(() => {
       store.dispatch("getUserInfo");
     });
     const store = useStore();
     return {
+      collapse,
       userInfoArr: computed(() => store.getters.getUserInfo),
     };
   },
@@ -76,7 +82,7 @@ export default {
 </script>
 <style>
 #sidebar {
-  min-height: 620px;
+  min-height: 700px;
   min-width: 250px;
   max-width: 250px;
   background: #2a3446;
@@ -88,7 +94,11 @@ export default {
 }
 #sidebar .sidebar-header {
   padding: 20px;
+  color: #f0d807;
   background: #333e53;
+}
+#sidebar ul {
+  padding: 20px;
 }
 #sidebar ul p {
   color: #fff;
@@ -113,10 +123,11 @@ a[data-toggle="collapse"] {
 }
 ul ul a {
   font-size: 0.9em !important;
-  padding-left: 30px !important;
+  padding: 10px;
+  /* padding-left: 30px !important; */
   background: #333e53;
 }
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   #sidebar {
     margin-left: -250px;
   }
@@ -126,5 +137,5 @@ ul ul a {
   #sidebarCollapse span {
     display: none;
   }
-}
+} */
 </style>

@@ -1,43 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar fixed-top navbar-light bg-light">
     <div class="container-fluid">
-      <button type="button" id="sidebarCollapse" class="btn btn-info">
-        <i class="fas fa-align-left"></i>
-        <span>Toggle Sidebar</span>
-      </button>
-      <button
-        class="btn btn-dark d-inline-block d-lg-none ml-auto"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i class="fas fa-align-justify"></i>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="nav navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Page</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Page</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Page</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Page</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div>
-    <header>
-      <ul class="nav nav-tabs">
+      <ul class="nav">
         <li class="nav-item">
           <router-link class="nav-link active" href="#" to="/punch"
             >Punch</router-link
@@ -64,25 +28,23 @@
           >
         </li>
       </ul>
-    </header>
-    <div class="container-fluid">
-      <div class="row flex-nowrap">
-        <sidebar />
-      </div>
     </div>
+  </nav>
+  <div class="row flex-nowrap">
+    <sidebar />
   </div>
 </template>
 <script>
 import Sidebar from "./Sidebar.vue";
+
 export default {
   components: { Sidebar },
-  name: "Home",
 };
 </script>
 <style>
 .navbar {
   padding: 15px 10px;
-  background: #fff;
+  background: rgb(84, 130, 168);
   border: none;
   border-radius: 0;
   margin-bottom: 40px;

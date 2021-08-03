@@ -59,11 +59,9 @@ export default {
       type: "",
     });
 
-    const sendDayOff = async () => {
-      console.log(reqArr);
+    const sendDayOff = async () => {  
       const res = await dayOff(reqArr);
       const status = res.data.status;
-      console.log(res);
       status === "ok" ? alert("sent successfully") : alert("Please try again");
     };
 
