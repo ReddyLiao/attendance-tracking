@@ -53,6 +53,7 @@
       </li>
     </ul>
   </nav>
+
   <div class="col-1 py-4">
     <button class="btn btn-primary" @click="collapse = !collapse">
       <span>&#9776;</span>
@@ -82,9 +83,10 @@ export default {
 </script>
 <style>
 #sidebar {
-  min-height: 700px;
   min-width: 250px;
   max-width: 250px;
+  position: relative;
+  height: 100vh;
   background: #2a3446;
   color: #fff;
   transition: all 0.3s;

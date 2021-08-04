@@ -95,7 +95,8 @@ export default {
   height: 150px;
   width: 150px;
   border-radius: 50%;
-  border: 6px solid rgb(92, 113, 228);
+  border: 8px solid rgb(92, 113, 228);
   font-size: 30px;
+  box-shadow: 5px 4px 5px rgba(0, 0, 0, 0.2);
 }
 </style>
