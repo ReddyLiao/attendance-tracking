@@ -1,6 +1,6 @@
 # attendance-tracking
 
-## Waring
+## Warning
 
 目前後端已暫停使用，僅能作前端的畫面瀏覽！
 
@@ -33,7 +33,7 @@
 首頁
 
 - 註冊/登入：有登入才能看到資訊
-- 打卡
+- 打卡 (https://ruiuiuiuiui.github.io/attendance-tracking/#/punch)
   - 顯示日期/時間
   - 打卡(btn)
     - 第一次打卡上班
@@ -41,18 +41,18 @@
     - 第二次打卡下班
       - 計算總上班時數
       - 即時顯示下班時間
-- 請假
+- 請假 (https://ruiuiuiuiui.github.io/attendance-tracking/#/requests)
   - 顯示可請假天數
   - 輸入請假起始日-日期
   - 輸入請假結束日-日期
   - 計算天數
-- 紀錄
+- 紀錄 (https://ruiuiuiuiui.github.io/attendance-tracking/#/record/dailyRecord)
   - 月曆畫面-點擊查閱單日上下班時間及工作小時
   - 統計
     - 單周：累積工作時數/加班時數/請假時數
     - 單月：累積工作時數/加班時數/請假時數
     - 每日：總共累積工作時數
-- 設定
+- 設定 (https://ruiuiuiuiui.github.io/attendance-tracking/#/setting/companySetup)
   - 公司制度
     - 上下班時間
     - 緩衝時間
